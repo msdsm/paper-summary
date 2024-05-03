@@ -17,7 +17,7 @@
       - 以下、Decoderの出力を再度入力するということを繰り返して単語を出力し続ける
       - 最後に特別な終了文字が出力されるまで繰り返す 
 
-![/image/transformer_1](transformer_1.png)
+![transformer_1](./image/transformer_1.png)
 
 
 ## 前提知識
@@ -54,7 +54,7 @@ $$
 ## Transformerの構造
   - 以下がTransformerの全体像
 
-![transformer_2](/image/transformer_2.png)
+![transformer_2](./image/transformer_2.png)
 
 ### Encoder-Decoderモデル
   - 左がEncoder,右がDecoder
@@ -100,4 +100,4 @@ $$
     - Layer Nomalizationは各データそれぞれで正規化する
     - 以下の図がわかりやすい
 
-![transformer_3](/image/transformer_3.png)
+![transformer_3](./image/transformer_3.png)
