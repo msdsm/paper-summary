@@ -36,9 +36,9 @@ $$Q \in \mathbb{R}^{m\times d_k}, K \in \mathbb{R}^{ n \times d_k}, V \in \mathb
 ### Multi Head Attention
   - 以下の式で定まる
 $${\rm{MultiHead}}\left(Q,K,V\right) = {\rm{Concat}}\left({\rm{head}}_1,\cdots, {\rm{head}}_h\right)W^O$$
-  - a
+
 $${\rm{where}} \quad {\rm{head}}_i = {\rm{Attention}}\left(QW_i^Q,KW_i^K,VW_i^V\right)$$
-  - b
+
 $$W_i^Q \in \mathbb{R}^{d_{model}\times d_k},W_i^K \in \mathbb{R}^{d_{model}\times d_k},W_i^V \in \mathbb{R}^{d_{model}\times d_v},W_i^O \in \mathbb{R}^{hd_v\times d_k}$$
 
   1.  query,key,valueに対してh個の重みWを用意して変換した後にAttentionを取る
