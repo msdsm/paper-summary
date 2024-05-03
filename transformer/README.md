@@ -87,7 +87,7 @@ $${\rm{PE}}$$
 $${\left(pos,2i\right)}$$
 $${\rm{sin}}\left(pos/10000^{2i/{d_{model}}}\right)$$
 $$\left(pos/10000^{2i/{d_{model}}}\right)$$
-
+$${\rm{PE}}_{\left(pos,2i\right)}$$
 
 $${\rm{PE}}_{\left(pos,2i\right)} = {\rm{sin}}\left(pos/10000^{2i/{d_{model}}}\right)$$
 
