@@ -84,12 +84,6 @@ $${\rm{FFN}}(x) = {\rm{max}}(0, xW_1+b_1)W_2 + b_2$$
   - 加算方法は以下
 
 
-$${\textrm{PE}}_{\left(pos,2i\right)}=
-a$$
-$${\textrm{sin}}\left(pos/10000^{2i/{d_{model}}}\right)$$
-- a
-$${\textrm{PE}}_{\left(pos,2i\right)}={\textrm{sin}}\left(pos/10000^{2i/{d_{model}}}\right)$$
-- a
 $${\textrm{PE}}_{\left(pos,2i\right)} = {\textrm{sin}}\left(pos/10000^{2i/{d_{model}}}\right)$$
 
 $${\textrm{PE}}_{\left(pos,2i+1\right)} = {\textrm{cos}}\left(pos/10000^{2i+1/{d_{model}}}\right)$$
