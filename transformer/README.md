@@ -41,9 +41,9 @@ $a$
 \
 $b$
 \
-$
+$$
 \rm{Multihead}
-$
+$$
 \
 $\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O$
 \
