@@ -38,11 +38,11 @@ $$Q \in \mathbb{R}^{m\times d_k}, K \in \mathbb{R}^{ n \times d_k}, V \in \mathb
   - 以下の式で定まる
 
 $
-{\rm{MultiHead}}(Q,K,V) = {\rm{Concat}}\left({\rm{head}_1},\cdots, {\rm{head}_h}\right)W^O
+\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O
 $
 \
 $
-{\rm{where}} \quad {\rm{head}}_i = {\rm{Attention}}\left(QW_i^Q,KW_i^K,VW_i^V\right)
+\rm{where} \quad \rm{head}_i = \rm{Attention}\left(QW_i^Q,KW_i^K,VW_i^V\right)
 $
 \
 $
