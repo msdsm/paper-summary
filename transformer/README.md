@@ -33,7 +33,12 @@ $$Q \in \mathbb{R}^{m\times d_k}, K \in \mathbb{R}^{ n \times d_k}, V \in \mathb
 (queryとkeyが同じ次元をもつ、queryはm個で(Key,Value)のペアはn個)
   - Attention map : ${\rm{softmax}}\left( \frac{QK^T}{\sqrt{d_k}}\right)\in \mathbb{R}^{m \times n}$
   - softmaxは行方向の和が1になるようにする
+  $$\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O$$
+$$\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O$$
+  - $$\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O$$
 ### Multi Head Attention
+$$\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O$$
+$$\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O$$
 
   - 以下の式で定まる
 $$\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O$$
