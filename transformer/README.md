@@ -24,7 +24,7 @@
 
 ### Attention
   - 入力:Query, Key, Valueの3つのベクトル($Q,K,V$)
-  - 出力:$V$の加重和
+  - 出力: $V$ の加重和
     - つまり$AV$
     - $A$は$Q,K$から計算される、これがAttention map
   - 以下の式で定まる
