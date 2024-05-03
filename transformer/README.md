@@ -25,8 +25,8 @@
 ### Attention
   - 入力:Query, Key, Valueの3つのベクトル($Q,K,V$)
   - 出力: $V$ の加重和
-    - つまり$AV$
-    - $A$は$Q,K$から計算される、これがAttention map
+    - つまり $AV$ 
+    - $A$ は $Q,K$ から計算される、これがAttention map
   - 以下の式で定まる
 $${\rm{Attention}}(Q,K,V) = {\rm{softmax}}\left( \frac{QK^T}{\sqrt{d_k}}\right)V$$ 
 $$Q \in \mathbb{R}^{m\times d_k}, K \in \mathbb{R}^{ n \times d_k}, V \in \mathbb{R} ^ {n \times d_v}$$
@@ -36,19 +36,19 @@ $$Q \in \mathbb{R}^{m\times d_k}, K \in \mathbb{R}^{ n \times d_k}, V \in \mathb
 ### Multi Head Attention
 
   - 以下の式で定まる
-$$
-{\rm{MultiHead}}(Q,K,V) = {\rm{Concat}}\left({\rm{head}_1},\cdots, {\rm{head}_h}\right)W^O
+
+${\rm{MultiHead}}(Q,K,V) = {\rm{Concat}}\left({\rm{head}_1},\cdots, {\rm{head}_h}\right)W^O
 \\
 {\rm{where}} \quad {\rm{head}}_i = {\rm{Attention}}\left(QW_i^Q,KW_i^K,VW_i^V\right)
 $$
 $$W_i^Q \in \mathbb{R}^{d_{model}\times d_k},
 W_i^K \in \mathbb{R}^{d_{model}\times d_k},
 W_i^V \in \mathbb{R}^{d_{model}\times d_v},
-W_i^O \in \mathbb{R}^{hd_v\times d_k}
-$$
-  - 1.  query,key,valueに対してh個の重みWを用意して変換した後にAttentionを取る
-  - 2. 得られたh個のベクトルをつなげる($m\times hd_v$になる)
-  - 3. $W^O$で次元戻す
+W_i^O \in \mathbb{R}^{hd_v\times d_k}$
+
+  1.  query,key,valueに対してh個の重みWを用意して変換した後にAttentionを取る
+  2. 得られたh個のベクトルをつなげる($m\times hd_v$になる)
+  3. $W^O$ で次元戻す
 
 
 ## Transformerの構造
