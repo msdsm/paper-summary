@@ -82,14 +82,10 @@ $${\rm{FFN}}(x) = {\rm{max}}(0, xW_1+b_1)W_2 + b_2$$
   - そこでPositional Encodingを使う
   - 一番最初にこのモデルに単語の分散表現を入力するときに単語位置に一意の値を各分散表現に加算する
   - 加算方法は以下
-
-
+  - a
   $${\rm{PE}}_{\left(pos,2i\right)} = {\rm{sin}}\left(pos/10000^{2i/d_{model}}\right)$$
-
-
+  - b
   $${\rm{PE}}_{\left(pos,2i+1\right)} = {\rm{cos}}\left(pos/10000^{2i+1/d_{model}}\right)$$
-
-
   - $pos$ は単語の位置, $i$ は次元
 ### Add & Norm
   - Add:Residual Connection
