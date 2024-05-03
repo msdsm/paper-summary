@@ -28,7 +28,7 @@
     - つまり $AV$ 
     - $A$ は $Q,K$ から計算される、これがAttention map
   - 以下の式で定まる
-$${\rm{Attention}}(Q,K,V) = {\rm{softmax}}\left( \frac{QK^T}{\sqrt{d_k}}\right)V$$ 
+$${\rm{Attention}}\left(Q,K,V\right) = {\rm{softmax}}\left( \frac{QK^T}{\sqrt{d_k}}\right)V$$ 
 $$Q \in \mathbb{R}^{m\times d_k}, K \in \mathbb{R}^{ n \times d_k}, V \in \mathbb{R} ^ {n \times d_v}$$
 (queryとkeyが同じ次元をもつ、queryはm個で(Key,Value)のペアはn個)
   - Attention map : ${\rm{softmax}}\left( \frac{QK^T}{\sqrt{d_k}}\right)\in \mathbb{R}^{m \times n}$
@@ -41,7 +41,9 @@ $a$
 \
 $b$
 \
-$\rm{Multihead}$
+$
+\rm{Multihead}
+$
 \
 $\rm{MultiHead}(Q,K,V) = \rm{Concat}\left(\rm{head}_1,\cdots, \rm{head}_h\right)W^O$
 \
