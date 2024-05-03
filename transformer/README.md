@@ -77,18 +77,18 @@ $$W_i^Q \in \mathbb{R}^{d_{model}\times d_k},W_i^K \in \mathbb{R}^{d_{model}\tim
 $${\rm{FFN}}(x) = {\rm{max}}(0, xW_1+b_1)W_2 + b_2$$
 
 ### Positional Encoding
-  - RecurrenceやConvolutionがないことから単語の順番が関係なくなってしまう
-    - "I love cats"と"cats love I"が同じになってしまう
-  - そこでPositional Encodingを使う
-  - 一番最初にこのモデルに単語の分散表現を入力するときに単語位置に一意の値を各分散表現に加算する
-  - 加算方法は以下
+- RecurrenceやConvolutionがないことから単語の順番が関係なくなってしまう
+  - "I love cats"と"cats love I"が同じになってしまう
+- そこでPositional Encodingを使う
+- 一番最初にこのモデルに単語の分散表現を入力するときに単語位置に一意の値を各分散表現に加算する
+- 加算方法は以下
 
+$${\rm{PE}}_{\left( pos,2i \right) } = \sin\left( pos/{10000}^{2i/{d_{model}}}\right)$$
 
-$${\rm{PE}}_{\left( pos,2i \right) } = \sin\left( pos/{10000}^{2i/{d_{model}}}\right) $$
+$${\rm{PE}}_{\left( pos,2i+1 \right) } = \cos\left( pos/{10000}^{2i+1/{d_{model}}}\right)$$
 
-$${\rm{PE}}_{\left( pos,2i+1 \right) } = \cos\left( pos/{10000}^{2i+1/{d_{model}}}\right) $$
+- $pos$ は単語の位置, $i$ は次元
 
-  - $pos$ は単語の位置, $i$ は次元
 ### Add & Norm
   - Add:Residual Connection
     - 前層の出力と入力を足す
