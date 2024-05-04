@@ -23,6 +23,6 @@
     - glide
     - ldm
 - super-resolution
-    - srcnn-vdsr-fsrcnn-fspcn : 移行中
+    - srcnn-vdsr-fsrcnn-fspcn : 超解像の歴史(CNNあたりからGAN登場まで)
     - swinir : 移行中
     - hat : 移行中
