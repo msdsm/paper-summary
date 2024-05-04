@@ -1,0 +1,38 @@
+# Improved Denoising Diffusion Probabilistic Models
+## ソース
+  - [Improved Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2102.09672)
+
+## 概要
+  - 以下のことをやって尤度を改善した
+    - 分散を間接的に学習可能なパラメータに変更(以前まではハイパーパラメータ)
+    - ノイズスケジュールをコサインに変更(以前までは線形)
+    - 時刻tのサンプリングを重要度サンプリング(important sampling)に変更(以前までは一様分布)
+
+
+## 提案手法
+### 分散について
+  - 分散が以前まではハイパーパラメータ$\beta_t$だったが、学習可能にした
+  - 直接的に学習可能パラメータに変更せずに以下のように$v$を推測して、得られた$v$から計算する
+
+$$\Sigma_{\theta}
+\left(x_t, t
+\right) = 
+\exp
+\left( 
+v \log \beta_t + \left(1-v \right)+\log \tilde{\beta_t}
+\right)$$
+### ノイズスケジュールについて
+  - 線形であったものをコサインに変更
+  - $\bar{\alpha_t}$の値を最初から小さめにするため
+$$
+\bar{\alpha_t}=\frac{f\left(t\right)}{f\left(0\right)}, 
+f\left(t\right) = \cos
+\left(
+\frac{t/T+s}{1+s} \cdot
+\frac{\pi}{2}
+\right)^2
+$$
+
+### サンプリングについて
+  - tを一様分布からサンプリングすると、lossのノイズが大きくなってしまうことがわかった
+  - lossの値の大きさを頼りに、重要度サンプリングを行うことで、ノイズが大きく乗らないようにした
