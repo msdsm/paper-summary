@@ -14,7 +14,7 @@
     - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
     - transformer : Transformer(Attention is all you need)
     - vision-transformer : VisionTransformer(AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE)
-    - swin-transformer : 移行中
+    - swin-transformer : SwinTransformer(Swin Transformer: Hierarchical Vision Transformer using Shifted Windows)
 - diffusion
     - ddpm : Denoising Diffusion Probabilistc Models
     - ddim : Denoising Diffusion Implicit Models
