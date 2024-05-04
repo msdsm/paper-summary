@@ -1,0 +1,23 @@
+# 超解像の歴史
+## SRCNN(Super Resolution CNN)(2014年)
+* バイキュービック法という補完アルゴリズムで拡大してからCNNいれる
+* 低画素が入力、高画素が出力、学習時は教師データ高画素との差分を最小化
+## VDSR(Very Deep Super Resolution)(2016年)
+* CNNを多層化したもの
+* 多層化による勾配消失問題を勾配クリッピングとResidualによって解決
+* 勾配クリッピング:勾配が閾値を超えたときに修正すること 
+## FSRCNN(Fast Super Resolution CNN)(2016年) 
+* SRCNNの高速化
+* SRCNNは低画素画像にバイキュービック補完->CNNだった
+* FSRCNNは補完をせずに直接低画素画像->CNN
+* 最後にDeconvolutionして拡大
+* 超解像分野では前者の方法をPre-upsampling SRといい後者の方法をPost-upsampling SRというらしい 
+## ESPCN(Efficient Sub-Pixel CNN)(2016年)
+* Post-upsampling手法
+* DeconvolutionではなくSubpixel Convolutionを使う
+* Deconvolutionは元の画像をpaddingしてConvolutionすることで拡大している(画像上)
+* Subpixel Convolutionは中間マップを複数個生成て、それら全部を使って拡大された画像を得る(画像下)
+* SR倍率をrとするとピクセル数は$r^2$となるため、中間マップを$r^2$生成する
+
+![history_1](./image/history_1.png)
+![history_2](./image/history_2.png)
