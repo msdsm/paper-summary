@@ -68,8 +68,8 @@ $$
   - 以下、上記の同時確率分布及び$x_t$を$x_0$から直接計算する方法導出
 
   - 入力画像$x_0$、潜在変数$x_1,\cdots,x_T$に対して各状態遷移は以下の式で定まる。
-$$
 
+$$
 x_t = \sqrt{1-\beta_t}x_{t-1}+\sqrt{\beta_t}\epsilon_t,\quad \epsilon_t=\mathcal{N}\left(0,I\right)
 $$
   - $\beta_t \in [0,1]$はハイパーパラメータであり事前に決まっている
@@ -179,15 +179,12 @@ $$
 \begin{align}
 &\begin{split}
 L &:= -\mathcal{L}\\
-&=
-- \mathbb{E}_{q(x_{1:T}|x_0)}\left[
+&= - \mathbb{E}_{q(x_{1:T}|x_0)}\left[
 \log \frac{p\left(x_T\right)\prod_{t=1}^{T}{p_{\theta}\left(x_{t-1}|x_t\right)}}{\prod_{t=1}^{T}{q\left(x_t|x_{t-1}\right)}}\right]
 \\
-&=
-- \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
+&= - \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
 \left[
-\log p \left( x_T \right) 
-+ \sum_{t=1}^{T}
+\log p \left( x_T \right) + \sum_{t=1}^{T}
 {
 \log \frac
 {p_{\theta}\left(x_{t-1}|x_t\right)}
@@ -195,17 +192,14 @@ L &:= -\mathcal{L}\\
 }
 \right]
 \\
-&=
-- \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
+&= - \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
 \left[
-\log p \left( x_T \right) 
-+ \sum_{t=2}^{T}
+\log p \left( x_T \right) + \sum_{t=2}^{T}
 {
 \log \frac
 {p_{\theta}\left(x_{t-1}|x_t\right)}
 {q\left(x_t|x_{t-1}\right)}
-}
-+ \log \frac
+}+ \log \frac
 {p_{\theta}\left(x_0|x_1\right)}
 {q\left(x_1|x_0\right)}
 \right] \quad \left(\because t=1だけ外に出す\right)
@@ -239,26 +233,21 @@ $$
 $$
 \begin{align}
 &\begin{split}
-L &=
-- \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
+L &= - \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
 \left[
-\log p \left( x_T \right) 
-+ \sum_{t=2}^{T}
+\log p \left( x_T \right) + \sum_{t=2}^{T}
 {
 \log \frac
 {p_{\theta}\left(x_{t-1}|x_t\right)}
 {q\left(x_t|x_{t-1}\right)}
-}
-+ \log \frac
+}+ \log \frac
 {p_{\theta}\left(x_0|x_1\right)}
 {q\left(x_1|x_0\right)}
 \right]
 \\
-&=
-- \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
+&= - \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
 \left[
-\log p \left( x_T \right) 
-+ \sum_{t=2}^{T}
+\log p \left( x_T \right) + \sum_{t=2}^{T}
 {
 \log \frac
 {p_{\theta}\left(x_{t-1}|x_t\right)}
@@ -266,67 +255,54 @@ L &=
 \frac
 {q \left( x_{t-1}|x_0\right)}
 {q \left( x_t | x_0\right)}
-}
-+ \log \frac
+} + \log \frac
 {p_{\theta}\left(x_0|x_1\right)}
 {q\left(x_1|x_0\right)}
 \right]
 \\
-&=
-- \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
+&= - \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
 \left[
-\log p \left( x_T \right) 
-+ \sum_{t=2}^{T}
+\log p \left( x_T \right) + \sum_{t=2}^{T}
 {
 \log \frac
 {p_{\theta}\left(x_{t-1}|x_t\right)}
 {q\left(x_{t-1}|x_t,x_0\right)}
-}
-+
+} +
 \sum_{t=2}^{T}{
 \left(
-\log q \left( x_{t-1}|x_0\right)
-- \log q \left( x_t | x_0\right)
+\log q \left( x_{t-1}|x_0\right)- \log q \left( x_t | x_0\right)
 \right)
-}
-+ \log \frac
+} + \log \frac
 {p_{\theta}\left(x_0|x_1\right)}
 {q\left(x_1|x_0\right)}
 \right] \quad\left(すごい\right)
 \\
-&=
-- \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
+&= - \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
 \left[
 \log
 \frac
 {p \left( x_T \right) }
-{q \left( x_T | x_0 \right) }
-+ \sum_{t=2}^{T}
+{q \left( x_T | x_0 \right) } + \sum_{t=2}^{T}
 {
 \log
 \frac
 {p_{\theta} \left( x_{t-1}|x_t\right)}
 {q \left( x_{t-1} | x_t,x_0\right)}
-}
-+ \log 
+} + \log 
 p_{\theta}\left(x_0|x_1\right)
 \right]
-
 \\
-&=
-- \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
+&= - \mathbb{E}_{q\left(x_{1:T}|x_0\right)}
 \left[
 D_{KL}\left(
 q\left(x_T|x_0\right)||
 p\left(x_T\right)
-\right)
-+\sum_{t=2}^{T}{
+\right) +\sum_{t=2}^{T}{
 D_{KL}\left(
 q\left(x_{t-1}|x_t,x_0\right)||
 p_{\theta}\left(x_{t-1}|x_t\right)
 \right)
-}
--
+} -
 \log p_{\theta}\left(x_0|x_1\right)
 \right]
 \end{split}\end{align}
