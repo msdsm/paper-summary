@@ -17,12 +17,12 @@
   - diffusion modelは2015年に提案されている
     - 論文:Deep Unsupervised Learning using NoneQuilibriumu Thermodynamics
   - 本論文では上記の論文のうち以下の2点を改良した
-    - 1. 逆拡散過程における分散$\sum_{\theta}(x_t,t)$を学習パラメータではなく$\beta_t$と固定した
+    - 1. 逆拡散過程における分散 $\sum_{\theta}(x_t,t)$ を学習パラメータではなく $\beta_t$ と固定した
       - diffusion modelでは各状態における分散をニューラルネットワークで表現して学習させていた
       - DDPMでは学習させずに簡略化
       - 実験した結果こっちの方がよかったらしい
     - 2. 目的関数の単純化
-      - diffusion modelの損失関数は以下$$\mathbb{E}_{x_0,\epsilon}\left[\frac{\beta_t}{2\sigma_t^2\alpha_t\left(1-\bar{\alpha_t}\right)} \| \epsilon - \epsilon_{\theta}\left(\sqrt{\bar{\alpha_t}}x_0+\sqrt{1-\bar{\alpha_t}}\epsilon,t\right)\|^2\right]$$
+      - diffusion modelの損失関数は以下 $$\mathbb{E}_{x_0,\epsilon}\left[\frac{\beta_t}{2\sigma_t^2\alpha_t\left(1-\bar{\alpha_t}\right)} \| \epsilon - \epsilon_{\theta}\left(\sqrt{\bar{\alpha_t}}x_0+\sqrt{1-\bar{\alpha_t}}\epsilon,t\right)\|^2\right]$$
       - DDPMでは以下 
 $$L_{\rm{simple}}\left(\theta\right):=\mathbb{E}_{t,x_0,\epsilon}\left[ \| \epsilon - \epsilon_{\theta}\left(\sqrt{\bar{\alpha_t}}x_0+\sqrt{1-\bar{\alpha_t}}\epsilon,t\right)\|^2\right]$$
 
