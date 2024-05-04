@@ -1,0 +1,18 @@
+# U-Net
+## 論文ソース
+- [U-Net:Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/pdf/1505.04597.pdf)
+## 概要
+- U字型NetworkでありAutoEncoderと似た形状(AEではない)
+  - image to image
+  - segmentationとかで使える
+    - pix2pixに使われているらしい  
+- 左側をContracting path, 右側をExpanding pathという
+- 各層はConvolution, max pooling,up-convolution, ReLUから成る
+  - 右への横移動はConv,ReLU
+  - 左側の下移動はmax pool
+  - 右側の上移動はup-conv
+- 右側に対して対応するcontractiong pathを持ってきている(架け橋のような構造)
+  - このSkip Connectionが非常に強力
+  - ResNetのresidual connection(残差接続)と似ている 
+
+![u-net_1](./image/u-net_1.png)
