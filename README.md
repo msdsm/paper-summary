@@ -10,7 +10,7 @@
 
 ## 論文
 - basic
-    - u-net : 移行中
+    - u-net : U-Net(Convolutional Networks for Biomedical Image Segmentation)
     - clip : 移行中
     - transformer : Transformer(Attention is all you need)
     - vision-transformer : 移行中
