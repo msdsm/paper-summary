@@ -19,7 +19,7 @@
     - ddpm : Denoising Diffusion Probabilistc Models
     - ddim : Denoising Diffusion Implicit Models
     - improved-ddpm : Improved Denoising Diffusion Probabilistic Models
-    - adm
+    - adm : Diffusion Models Beat GANs on Image Synthesis
     - glide
     - ldm
 - super-resolution

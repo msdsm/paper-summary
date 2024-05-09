@@ -1,0 +1,73 @@
+# ADM(Ablated Diffusion Model)
+## ソース
+- [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/pdf/2105.05233)
+## 概要
+- diffusion modelのablation studyを行って最適なモデルアーキテクチャを探した
+- 評価指標としてFIDを採用した
+- 当時の画像生成のSOTAであるBigGANをFIDで上回った
+  - diffusionがGANを超えたと言われるきっかけになった論文がこれ
+## 提案手法
+### ablation study
+- 以下のことを検証
+  - モデルサイズを固定した時にdepthとwidthのどちらを増やすべきか
+  - attention headsを増やす
+  - attentionの計算時に $16 \times 16$だけでなく、$32 \times 32, 16 \times 16, 8 \times 8$についても検証する
+  - アップサンプリングやダウンサンプリングでBigGANの残差ブロック(residual block)を使う
+  - 残差接続時に $\frac{1}{\sqrt{2}}$ でrescaleする
+- その結果、以下のことがわかった
+  - headsは多い方が良い
+  - channelsは少ない方が良い
+  - 学習時間が増えるがresidual blocksは増やした方が良い
+- 次のラベルを用いた条件付き生成では上記のことを採用した上で実験
+### classifier guidance
+- ラベルを用いた条件付き生成においてBigGANを上回った
+- DDPM, DDIMそれぞれにおける生成過程(reverse noising process)のアルゴリズムは以下
+#### DDPMの場合
+- diffusion model : $\left(\mu_{\theta}\left(x_t\right), \Sigma_{\theta}\left(x_t\right)\right)$
+- classifier : $p_{\phi}\left(y|x_t\right)$
+- class label : $y$
+- gradient scale : $s$
+- $x_T \sim \mathcal{N}\left(0,I\right)$
+- このとき $t=T, \cdots, 1$ まで以下を繰り返す
+
+$$
+\begin{align}
+&\begin{split}
+\mu &:= \mu_{\theta}\left(x_t\right)\\
+\Sigma &:= \Sigma_{\theta}\left (x_t\right)\\
+x_{t-1} &\sim
+\mathcal{N}\left(
+\mu + s \Sigma \nabla_{x_t} \log{p_{\phi}\left(y|x_t\right), \Sigma}
+\right)
+\end{split}
+\end{align}
+$$
+- 最後に $x_0$ を出力
+
+#### DDIMの場合
+- diffusion model : $\epsilon_{\theta}\left(x_t\right)$
+- classifier : $p_{\phi}\left(y|x_t\right)$
+- class label : $y$
+- gradient scale : $s$
+- $x_T \sim \mathcal{N}\left(0,I\right)$
+- このとき $t=T, \cdots, 1$ まで以下を繰り返す
+
+$$
+\begin{align}
+&\begin{split}
+\hat{\epsilon} &:=
+\epsilon_{\theta}\left(x_t\right)-
+\sqrt{1-\bar{\alpha}_t}
+\nabla_{x_t}
+\log{p_{\phi}}
+\left(y|x_t\right)
+\\
+x_{t-1} &\sim
+\sqrt{\bar{\alpha}_{t-1}}
+\left(
+\frac{x_t - \sqrt{1-\bar{\alpha}_t}\hat{\epsilon}}{\sqrt{\bar{\alpha}_t}}
+\right)+\sqrt{1-\bar{\alpha}_{t-1}}\hat{\epsilon}
+\end{split}
+\end{align}
+$$
+- 最後に $x_0$ を出力
