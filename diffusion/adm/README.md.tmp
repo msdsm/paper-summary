@@ -7,6 +7,7 @@
 - 当時の画像生成のSOTAであるBigGANをFIDで上回った
   - diffusionがGANを超えたと言われるきっかけになった論文がこれ
 - ラベル条件付き生成のideaは、分類器の勾配を利用して平均をずらすというもの
+- fidelityとdiversityの調整に成功
 
 ## 提案手法
 ### ablation study
@@ -73,3 +74,8 @@ x_{t-1} &\sim
 \end{align}
 $$
 - 最後に $x_0$ を出力
+
+### diversityとfidelityのtrade off
+- 上述の式の $s$ を大きくすると、diversity(多様性)を犠牲にしてfidelity(quality)を上げることができる
+- $s$ を大きくするとよりguide情報に近づくということ
+- つまり、この $s$ の値を調整することでdiversityとfidelityを調整できる
