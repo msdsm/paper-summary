@@ -20,8 +20,8 @@
     - ddim : Denoising Diffusion Implicit Models
     - improved-ddpm : Improved Denoising Diffusion Probabilistic Models
     - adm : Diffusion Models Beat GANs on Image Synthesis
-    - glide
-    - ldm
+    - glide : Guided Language to Image Diffusion for Generation and Editing
+    - ldm : Latent Diffusion Model(Stable diffusion)
 - super-resolution
     - srcnn-vdsr-fsrcnn-fspcn : 超解像の歴史(CNNあたりからGAN登場まで)
     - swinir : SwinIR(SwinIR: Image Restoration Using Swin Transformer)
