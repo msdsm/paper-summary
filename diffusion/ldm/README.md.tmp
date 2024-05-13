@@ -1,0 +1,54 @@
+# LDM(Latent Diffusion Model)
+## ソース
+- [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752)
+
+## 概要
+- Stable Diffusionの論文
+- diffusion modelのパラメータ数を減らすためにVAEを導入
+  - encoderを通して潜在空間上でdiffusion modelに入力、出力をdecoderに入力して戻す
+- 条件付けをU-netにcross attentionを導入することで実現
+## 提案手法
+- 全体図は以下(論文より引用)
+![ldm_01](./image/ldm_01.png)
+- 上半分が拡散過程(学習時)で下半分が逆拡散過程(生成時)
+- 横のconditioningが条件付け方法
+  - 条件の内容はテキストでも画像でもなんでもよくて、encoder $\tau_{\theta}$を通して潜在空間ベクトルを得られることが大事
+
+### VAEの導入
+- diffusion modelのパラメータ数を減らすためにVAEを通して潜在空間上でdiffusion modelを使うようにした
+- 厳密に説明すると以下
+- 拡散過程の前に、encoder $\mathcal{E}$を用いて入力画像 $x$から潜在表現 $z = \mathcal{E}\left(x\right)$を得る
+- 逆拡散過程の後に、decoder $\mathcal{D}$を用いて出力$z$から$\bar{x} = \mathcal{D}\left(z\right)$を得る
+  - $x \in \mathbb{R}^{H \times W \times c}$,$z \in \mathbb{R}^{h \times w \times c}$
+  - $f = \frac{H}{h}=\frac{W}{w}$ をダウンサンプリングの比率として定義
+  - $f = 2^m (m \in \mathbb{N})$　とかける
+- 以上のように潜在空間上で拡散モデルを扱うことから、diffusion modelにおける損失関数$L_{\rm{DM}}$は$L_{\rm{LDM}}$に変わる
+$$
+\begin{align}
+&\begin{split}
+L_{\rm{DM}} &= \mathbb{E}_{x,\epsilon \sim \mathcal{N}\left(0,1\right),t}[\|\epsilon-\epsilon_{\theta}\left(x_t, t\right)\|_2^2]
+\\
+L_{\rm{LDM}} &= \mathbb{E}_{\mathcal{E}\left(x\right),\epsilon \sim \mathcal{N}\left(0,1\right),t}[\|\epsilon-\epsilon_{\theta}\left(z_t, t\right)\|_2^2]
+\end{split}\end{align}
+$$
+
+### 条件付け
+- 上図のようにU-Netのskip connectionされている各高さにおいてcross attentionを導入
+- 条件$y$にたいしてその分野におけるencoder $\tau_{\theta}$を用意して潜在表現$\tau_{\theta}\left(y\right) \in \mathbb{R}^{M \times d_{\tau}}$を得て、これから$K, V$を得る
+- $Q$はU-netの前層の出力から得る
+$$
+\begin{align}
+&\begin{split}
+{\rm{Attention}}\left(Q,K,V\right) &= {\rm{softmax}}\left(\frac{QK^T}{\sqrt{d}}\right)V
+\\
+Q &= W_Q^{\left(i\right)} \cdot \varphi_i \left(z_t\right)
+\\
+K &= W_K^{\left(i\right)} \cdot \tau_{\theta} \left(y\right)
+\\
+V &= W_V^{\left(i\right)} \cdot \tau_{\theta} \left(y\right)
+\end{split}\end{align}
+$$
+- $\varphi \left(z_t\right) \in \mathbb{R}^{N \times d_e^i}$ はU-netの中間層出力
+- $W_V^{\left(i\right)} \in \mathbb{R}^{d \times d_e^i}, W_Q^{\left(i\right)} \in \mathbb{R}^{d \times d_{\tau}}, W_K^{\left(i\right)} \in \mathbb{R}^{d \times d_{\tau}}$
+- このとき、損失関数は以下
+$L_{\rm{LDM}} = \mathbb{E}_{\mathcal{E}\left(x\right),y,\epsilon \sim \mathcal{N}\left(0,1\right),t}[\|\epsilon-\epsilon_{\theta}\left(z_t, t, \tau_{\theta}\left(y\right)\right)\|_2^2]$ 
