@@ -1,0 +1,76 @@
+# DRCT(Dense Residual Connected Transformer)
+## 論文ソース
+  - [DRCT: Saving Image Super-Resolution away from Information Bottleneck](https://arxiv.org/pdf/2404.00722v4)
+
+## 概要
+- SOTAであるHATを上回る(2年ぶりに更新)
+- 既存のモデルではnetworkの後半の層にいくにつれて空間情報が減少しているという問題を提起
+- これを解決するためにDense residual blockを導入
+  - RRDB-Net, RDNから着想を得たらしい
+
+## 前提知識
+### Leaky ReLU
+- ReLUと異なり負のときに0ではなく小さい負の値をとる
+$$
+\begin{equation*}
+f\left(x\right)=
+   \begin{cases}
+      x, \quad x \geq 0\\
+      \alpha x, \quad x \le 0\
+    \end{cases}
+\end{equation*}
+$$
+- $\alpha$は$0.01$など
+
+
+## DRCT
+- 構造はHATと同じくShallow Feature Extraction, Deep Feature Extraction, Image Reconstructionの3つからなる
+- Shallow Feature ExtractionとImage Reconstructionは同じ
+- Deep Feature ExtractionのHABが代わりにSDRCB(Swin Dense-Residual Connected Block)になっている
+    - これは(STL->Conv->LeakyReLU)を1単位として前層のすべての出力をconcatenateしている
+    - これが5個ある
+    - この時、ソースコードをみると次元が一致するように調整されている
+      - https://github.com/ming053l/DRCT/blob/main/drct/archs/DRCT_arch.py
+      - 292行目以降のadjust1,adjust2など
+![](./image/drct_1.png)
+
+- 以下、数式で表現
+### Shallow Feature Extraction
+
+$$F_0 = \rm{Conv}\left(I_{LQ}\right) \quad I_{LQ} \in \mathbb{R}^{H \times W \times C_{in}}$$
+
+### Deep Feature Extraction
+- 全体は以下
+$$F_{DF} = H_{DF}\left(F_0\right)$$
+- これはRDGを繰り返すことで得られる
+$$
+\begin{align}
+&\begin{split}
+F_i &= {\rm{RDG}}_i \left(F_{i-1}\right) \quad i = 1, 2, \cdots, K,\\
+F_{DF} &= {\rm{Conv}}\left(F_K\right)
+\end{split}\end{align}
+$$
+- またRDGは複数のSDRCBから成る
+- SDRCBはdense residual blockを導入した5つのSTLから成る
+- SDRCB間の入出力を$Z$とすると以下のようにかける
+$$
+\begin{align}
+&\begin{split}
+Z_j &= H_{trans}\left({\rm{STL\left([Z, \cdots, Z_{j-1}]\right)}}\right) \quad j=1,2,3,4,5,
+ \\
+ {\rm{SDRCB}\left(Z\right)} &= \alpha \cdot Z_5 + Z
+\end{split}\end{align}
+$$
+- $H_{trans}$は$1\times1$ConvolutionとLeakyReLU
+### Image Reconstruction
+
+$$I_{SR} = H_{rec}\left(F_0 + F_{DF}\right)$$
+- $H_{rec}$はfunction of the reconstruction
+## 論文中の英単語メモ
+- meticulous(adj) : 几帳面な
+- commendable(adj) : 称賛に値する
+- mitigate(v) : 軽減する
+- unleash(v) : 解き放つ
+- oscillation(n) : 振動、発振
+- efficacy(n) : 効能
+- consecutive(adj) : 連続した

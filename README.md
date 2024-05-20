@@ -25,4 +25,5 @@
 - super-resolution
     - srcnn-vdsr-fsrcnn-fspcn : 超解像の歴史(CNNあたりからGAN登場まで)
     - swinir : SwinIR(SwinIR: Image Restoration Using Swin Transformer)
-    - hat : HAT-L(Activating More Pixels in Image Super-Resolution Transformer)
+    - hat : HAT-L(Hybrid Attention Transformer)
+    - drct : DRCT(Dense Residual Connected Transformer)
