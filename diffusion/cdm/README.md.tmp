@@ -1,0 +1,66 @@
+# ADM(Ablated Diffusion Model)
+## ソース
+- [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/pdf/2105.05233)
+## 概要
+- クラス条件付き画像生成においてBigGAN-deepやVQ-VAE-2を上回る性能
+- diffusion modelで画像生成をした後に、Super Resolution Diffusion Modelで解像度をあげる
+  - SRの処理を重ねて段階的に解像度を上げている
+  - これをCascadeと名付けた
+- さらにdata augmentationによる学習で精度向上させた
+
+## 前提
+### Diffusion Model
+$$
+\begin{align}
+q(\boldsymbol{x}_{1:T} | \boldsymbol{x}_0) &= \prod_{t=1}^{T} q(\boldsymbol{x}_t | \boldsymbol{x}_{t-1}), \\
+q(\boldsymbol{x}_t | \boldsymbol{x}_{t-1}) &= \mathcal{N}(\boldsymbol{x}_t; \sqrt{1 - \beta_t} \boldsymbol{x}_{t-1}, \beta_t \mathbf{I})
+\end{align}
+$$
+
+$$
+\begin{align}
+p_\theta(\boldsymbol{x}_{0:T}) &= p(\boldsymbol{x}_T) \prod_{t=1}^{T} p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t), \\
+p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t) &= \mathcal{N}(\boldsymbol{x}_{t-1}; \boldsymbol{\mu}_\theta(\boldsymbol{x}_t, t), \boldsymbol{\Sigma}_\theta(\boldsymbol{x}_t, t))
+\end{align}
+$$
+
+$$
+\begin{align}
+\mu_\theta(\boldsymbol{x}_t, t) &= \frac{1}{\sqrt{\alpha_t}} \left( \boldsymbol{x}_t - \frac{\beta_t}{\sqrt{1 - \alpha_t}} \boldsymbol{\epsilon}_\theta(\boldsymbol{x}_t, t) \right) \\
+\Sigma_\theta^{ii}(\boldsymbol{x}_t, t) &= \exp \left( \log \tilde{\beta}_t + (\log \beta_t - \log \tilde{\beta}_t) \cdot v^i_{\theta}(\boldsymbol{x}_t, t) \right)
+\end{align}
+$$
+
+$$
+L_{\text{simple}}(\boldsymbol{\theta}) = \mathbb{E}_{\boldsymbol{x}_0, \boldsymbol{\epsilon} \sim \mathcal{N}(\mathbf{0}, \mathbf{I}), t \sim \mathcal{U}(\{1, \ldots, T\})} \left[ \left\| \boldsymbol{\epsilon} - \boldsymbol{\epsilon}_\theta\left(\sqrt{\bar{\alpha}_t} \boldsymbol{x}_0 + \sqrt{1 - \bar{\alpha}_t} \boldsymbol{\epsilon}, t\right) \right\|^2 \right]
+\\ \left(\because \boldsymbol{x}_t = \sqrt{\bar{\alpha}_t} \boldsymbol{x}_0 + \sqrt{1 - \bar{\alpha}_t} \boldsymbol{\epsilon}\right)
+$$
+
+
+### Conditional Diffusion Model
+
+
+## 提案手法
+- 以下全体図
+![cdm_01](./images/cdm_01.png)
+- Model1がconditional diffusion model
+- Model2,3がclass conditional Super Resolution Diffusion Model
+  - これの元は、Image super-resolution via iterative refinementという論文のモデル
+
+### class conditional super resolution diffusion model
+- 入力は3つ
+  - $\boldsymbol{x}_t$ : tステップ目のノイズ画像
+  - $y$ : クラス
+  - $\boldsymbol{z}$ : 低画質画像
+- 全体図はU-Net
+
+![cdm_04](./images/cdm_04.png)
+
+- クラスラベルは以下のように与えられる
+
+![cdm_03](./images/cdm_03.png)
+
+### Data Augmentation
+- Blurring Augmentation
+- Truncated Conditioning Augmentation
+- Non-truncated Conditioning Augmentation
