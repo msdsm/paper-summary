@@ -1,0 +1,47 @@
+# SR3(Image Super-Resolution via Iterative Refinement)
+## ソース
+- [Image Super-Resolution via Iterative Refinement](https://arxiv.org/pdf/2104.07636)
+- ソースコード
+  - https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement/tree/master
+## 概要
+- Conditional Diffusion ModelによるSuper Resolution
+- 条件が低画質画像
+- ノイズを予測するNNの入力が3つ(ノイズ付与画像、ステップ数、低画質画像)
+- NNはUNet
+- UNetでは、低画質画像をノイズ付与画像と画質をそろえるために、条件の低画質画像をbicubic interpolationで拡大したあとにconcatenateした
+- ノイズスケジュールについては、WaveGradにしたがった
+  - WaveGrad: Estimating
+Gradients for Waveform Generation. In ICLR, 2021
+  - 一様分布からステップ数をサンプリング
+  - そのあとにノイズを得るためにさらに一様分布からサンプリングする
+  - 詳細は以下にある
+
+## 提案手法
+- Conditional Diffusion ModelでSuper Resolutionするというだけである
+- 以下のゼロ作の数式と異なる点は2点(左がゼロ作、右が論文)
+  - https://github.com/msdsm/oreilly-deeplearning-5/blob/main/09/09.ipynb
+  - $\beta \to \alpha$
+  - $\bar{\alpha} \to \gamma$
+- 低画質画像が$\boldsymbol{x}$で高画質画像が$\boldsymbol{y}$
+### 学習時
+- 以下を繰り返す
+   1. $\left(\boldsymbol{x}, \boldsymbol{y}_0\right) \sim p\left(\boldsymbol{x}, \boldsymbol{y}\right) \quad \left(\text{データセットからサンプリング}\right)$ 
+   2. $\gamma \sim p\left(\gamma\right)$
+   3. $\boldsymbol{\epsilon} \sim \mathcal{N}\left(\boldsymbol{0}, \boldsymbol{I}\right)$
+   4. $\nabla_{\boldsymbol{\theta}}\| f_{\boldsymbol{\theta}}\left(\boldsymbol{x}, \sqrt{\gamma}\boldsymbol{y}_0 + \sqrt{1-\gamma}\boldsymbol{\epsilon}, \gamma\right) - \boldsymbol{\epsilon}\|_p^p\quad \left(\text{損失計算}\right)$ 
+- $f_{\boldsymbol{\theta}}$はU-Net
+  - 入力が順に低画質画像、ノイズ付与画像、ステップ数
+  - 2つ目の入力のノイズ付与画像は$q\left(\boldsymbol{y}_t \mid \boldsymbol{y}_0\right)$の式
+  - ステップ数$t$ではなく$\gamma$を入力している
+  - 低画質画像(条件)$\boldsymbol{x}$をbicubic interpolationで拡大して$\boldsymbol{y}_t$と画質を一致させた後にconcatenation
+- ノイズスケジュール $p\left(\gamma\right)$ について
+  - $p\left(\gamma\right) = \sum_{t=1}^{T}\frac{1}{T}U\left(\gamma_{t-1},\gamma_t\right)$
+  - 学習時の$\gamma \sim p\left(\gamma\right)$は以下の2段階の一様分布サンプリングで得る
+    - $t \sim U\left(0,T\right)$
+    - $\gamma \sim U\left(\gamma_{t-1},\gamma_t\right)$
+### 生成時
+1. $\boldsymbol{y}_T \sim \mathcal{N}\left(\boldsymbol{0},\boldsymbol{I}\right)$
+2. $t=T, \cdots, 1$まで順に以下を繰り返す
+   1. $\boldsymbol{z} \sim \mathcal{N}\left(\boldsymbol{0},\boldsymbol{I}\right)\quad \left(t=1\text{の時は}\boldsymbol{z}=\boldsymbol{0}\right)$
+   2. $\boldsymbol{y}_{t-1} = \frac{1}{\sqrt{\alpha}_t}\left(\boldsymbol{y}_t - \frac{1-\alpha_t}{\sqrt{1-\gamma_t}}f_{\boldsymbol{\theta}}\left(\boldsymbol{x}, \boldsymbol{y}_t, \gamma_t\right)\right) + \sqrt{1-\alpha_t}\boldsymbol{z}$
+3. $\boldsymbol{y}_0$を出力
