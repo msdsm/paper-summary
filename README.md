@@ -28,3 +28,4 @@
     - swinir : SwinIR(SwinIR: Image Restoration Using Swin Transformer)
     - hat : HAT-L(Hybrid Attention Transformer)
     - drct : DRCT(Dense Residual Connected Transformer)
+    - sr3 : Image Super-Resolution via Iterative Refinement
