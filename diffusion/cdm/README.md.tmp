@@ -1,6 +1,6 @@
-# ADM(Ablated Diffusion Model)
+# Cascaded Diffusion Model
 ## ソース
-- [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/pdf/2105.05233)
+- [Cascaded Diffusion Models for High Fidelity Image Generation](https://arxiv.org/pdf/2106.15282)
 ## 概要
 - クラス条件付き画像生成においてBigGAN-deepやVQ-VAE-2を上回る性能
 - diffusion modelで画像生成をした後に、Super Resolution Diffusion Modelで解像度をあげる
