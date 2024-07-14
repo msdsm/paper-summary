@@ -29,3 +29,4 @@
     - hat : HAT-L(Hybrid Attention Transformer)
     - drct : DRCT(Dense Residual Connected Transformer)
     - sr3 : Image Super-Resolution via Iterative Refinement
+    - ipg : Image Processing GNN: Breaking Rigidity in Super-Resolution
