@@ -15,6 +15,7 @@
     - transformer : Transformer(Attention is all you need)
     - vision-transformer : VisionTransformer(AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE)
     - swin-transformer : SwinTransformer(Swin Transformer: Hierarchical Vision Transformer using Shifted Windows)
+    - distillation : Distilling the Knowledge in a Neural Network
 - diffusion
     - ddpm : Denoising Diffusion Probabilistc Models
     - palette : Palette: Image-to-Image Diffusion Models
