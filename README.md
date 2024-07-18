@@ -17,6 +17,7 @@
     - swin-transformer : SwinTransformer(Swin Transformer: Hierarchical Vision Transformer using Shifted Windows)
 - diffusion
     - ddpm : Denoising Diffusion Probabilistc Models
+    - palette : Palette: Image-to-Image Diffusion Models
     - ddim : Denoising Diffusion Implicit Models
     - improved-ddpm : Improved Denoising Diffusion Probabilistic Models
     - adm : Diffusion Models Beat GANs on Image Synthesis

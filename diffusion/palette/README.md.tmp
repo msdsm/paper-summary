@@ -1,0 +1,34 @@
+# Palette: Image-to-Image Diffusion Models
+
+## ソース
+- https://arxiv.org/pdf/2111.05826
+- https://diffusion-palette.github.io/
+
+## 概要
+- Conditional Diffusion Modelに基づくImage-to-Imageのためのフレームワークを提案
+- テストはnamely colorization, inpainting, uncropping, JPEG restorationの4つ
+
+## 提案手法
+- 条件として画像$\boldsymbol{x}$が与えられたときの条件付き確率$p\left(\boldsymbol{y} \mid \boldsymbol{x}\right)$を考える
+- このとき損失関数は以下
+
+$$
+\mathbb{E}_{\left(\boldsymbol{x},\boldsymbol{y}\right)}
+\mathbb{E}_{\boldsymbol{\epsilon} \sim \mathcal{N}\left(\boldsymbol{0},\boldsymbol{I}\right)}
+\mathbb{E}_{\boldsymbol{\gamma}}
+\left| 
+f_{\boldsymbol{\theta}}\left(
+\boldsymbol{x},
+\sqrt{\gamma}\boldsymbol{y} + \sqrt{1-\gamma}\boldsymbol{\epsilon},
+\gamma
+\right) - \boldsymbol{\epsilon}
+\right|^p_p
+$$
+
+- 普通のdiffusion modelではステップ数$t$を入れているが、$\alpha_t$から計算される係数を直接$\gamma$として入れている
+- 条件$\boldsymbol{x}$とノイズが加えられた画像$\tilde{\boldsymbol{y}}=\sqrt{\gamma}\boldsymbol{y} + \sqrt{1-\gamma}\boldsymbol{\epsilon}$はU-Net内でconcatenateしている
+
+## 英単語メモ
+- unified : 統一された
+- adovocate : 提唱する
+- myriad : 無数の
