@@ -18,3 +18,20 @@
 ### 条件付き拡散モデルによるSR
 
 ## 提案手法
+
+
+## 英単語メモ
+- drastically : 劇的に
+- exacerbate : 悪化させる
+- prohibitive : 法外な
+- alleviate : 軽減する、緩和する
+- catastrophic : 壊滅的な
+- differentiating : 区別する
+- peculiarity : 特殊性
+- dubbed : 
+- progressive : 進歩的な
+- supervisory
+- threehold
+- degradation
+- shortcoming : 欠点、短所
+- tandem
