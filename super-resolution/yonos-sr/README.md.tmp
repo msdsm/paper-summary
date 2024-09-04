@@ -37,6 +37,10 @@ $$
 \argmin_{\boldsymbol{\theta}}\mathbb{E}_{\boldsymbol{\epsilon}, t}\left[ \omega\left(\lambda_t\right) \| \hat{\boldsymbol{z}}_{\boldsymbol{\theta}}\left(\boldsymbol{z}_t, \boldsymbol{z}_l, \lambda_t \right) - \hat{\boldsymbol{z}}_{\boldsymbol{\phi}}\left(\boldsymbol{z}_t, \boldsymbol{z}_l^{\prime}, \lambda_t \right) \|^2_2 \right]
 $$
 
+- アルゴリズムは以下
+![algorithm](./images/algorithm.png)
+(論文より引用)
+
 ## 英単語メモ
 - drastically : 劇的に
 - exacerbate : 悪化させる
