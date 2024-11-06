@@ -33,3 +33,6 @@
     - sr3 : Image Super-Resolution via Iterative Refinement
     - ipg : Image Processing GNN: Breaking Rigidity in Super-Resolution
     - yonos-sr : You Only Need One Step: Fast Super-Resolution with Stable Diffusion via Scale Distillation
+    - hmanet : HMANet: Hybrid Multi-Axis Aggregation Network for Image Super-Resolution
+- video
+  - video-llm-survey : Video Understanding with Large Language Models: A Survey 
