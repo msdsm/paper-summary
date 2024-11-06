@@ -35,4 +35,5 @@
     - yonos-sr : You Only Need One Step: Fast Super-Resolution with Stable Diffusion via Scale Distillation
     - hmanet : HMANet: Hybrid Multi-Axis Aggregation Network for Image Super-Resolution
 - video
-  - video-llm-survey : Video Understanding with Large Language Models: A Survey 
+  - video-llm-survey : Video Understanding with Large Language Models: A Survey
+  - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
