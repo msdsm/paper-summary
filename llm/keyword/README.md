@@ -22,6 +22,10 @@
 ![rlhf](./images/rlhf.png)
 (https://qiita.com/shibu_phys/items/91dc8d600da433d92231 より引用)
 
+
+
+## DPO
+
 ## LLM学習方法
 
 ![llm-trainiing](./images/llm-training.png)
