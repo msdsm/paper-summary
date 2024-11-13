@@ -1,0 +1,94 @@
+# LLaVA(Visual Instruction Tuning)
+
+
+## ソース
+- https://arxiv.org/pdf/2304.08485
+- https://github.com/haotian-liu/LLaVA
+
+## 概要
+- LLaVAを提案
+  - Large Language and Vision Assistant
+- 概要は4点
+- Multimodal instruction-following data
+  - vision-language instruction-following dataが不足している
+  - 上記の課題に対してGPT-4を使って画像とテキストのペアをinstruction-following formatに変換するデータ生成パイプラインを提案
+- Large multimodal models
+  - 大規模マルチモーダルモデル(LMM)の開発
+  - CLIPのvisual encoderとVicunaのlanguage decoderを接続
+  - 生成したinstructional vision-language dataを使ってend-to-endでfine-tuning
+- Multimodal instruction-following benchmark
+  - 多様な画像、指示、詳細な注釈を含むLLaVA-Benchという2つのチャレンジングなベンチマークを発表
+- Open-source
+  - 生成したmultimodal instruction data、コードベース、モデルチェックポイント、ビジュアルチャットデモを公開
+
+## データ生成
+- 画像から2つのsymbolic representationを得る
+  - Captions
+  - Bounding boxes
+- レスポンスとして以下3つ用意
+  - conversation
+  - detailed description
+  - complex reasoning
+- 論文のデータ例がわかりやすい
+![data-example](./images/data-example.png)
+(論文より引用)
+
+
+## Architecture
+- LLaVAのnetwork architectureは下図
+![architecture](./images/architecture.png)
+(論文より引用)
+
+- $X_V$が画像, $X_q$がLanguage Instruction, $X_a$がLanguage Response
+- $X_q$からsequence of tokens $H_q$を得る
+- CLIPのVision Encoder(ViT-L)$g$を使用して$Z_V$を得る
+- 得られた$Z_V$の次元をword embedding spaceと一致させるためにProjectionする
+
+$$
+\begin{align}
+&\begin{split}
+Z_V &= g\left(X_V\right) \\
+H_V &= W \cdot Z_V
+\end{split}
+\end{align}
+$$
+
+- 得られた$H_V, H_q$からLLM $f_{\phi}\left(\cdot\right)$を通して$X_a$を得る
+- $f_{\theta}$はVicunaのdecoder
+
+## Training
+- $X_V$からmulti-turn conversation data $\left(X_q^1, X_a^1, \cdots, X_q^T, X_a^T\right)$を生成
+  - $T$はturnの合計数
+- $t$番目のturn $X_{\mathrm{instruct}}^t$を以下で定義
+
+$$
+X_{\mathrm{instruct}}^t = 
+\begin{cases}
+    \text{Randomly choose} \  [X_q^1, X_V] \  \text{or}\  [X_V, X_q^1], \ \text{the first turn}\ t=1\\
+    X_q^t, \quad \text{the remaining turns} \quad t>1
+\end{cases}
+$$
+- このとき以下で$X_a$が計算される
+
+$$
+p\left(X_a \mid X_V, X_{\mathrm{instruct}}\right) = \prod_{i=1}^{L} p_{\theta}\left(x_i \mid X_V, X_{\mathrm{instruct}, <i}, X_{a,<i}\right)
+$$
+
+- $x_i$は以下の画像の緑部分
+
+![xi](./images/xi.png)
+(論文より引用)
+
+
+- 学習は以下の2stageから構成される
+  - Stage 1: Pre-training for Feature Alignment
+  - Stage 2: Fine-tuning End-to-End
+
+### Stage 1: Pre-training for Feature Alignment
+- CLIPのencoderとLLMのdecoderをfreezeする
+- つまり、学習可能なパラメータを$\theta = W$とする
+- これはvisual tokenizerの学習とみなせる
+
+### Stage 2: Fine-tuning End-to-End
+- 次にCLIPのencoderをfreezeしてdecoderと行列を学習する
+- つまり、学習可能なパラメータを$\theta = \{W,\phi\}$とする

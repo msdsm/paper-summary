@@ -37,6 +37,7 @@
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
 - vision-and-language
   - video-llm-survey : Video Understanding with Large Language Models: A Survey
+  - llava : Visual Instruction Tuning
 - llm
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
