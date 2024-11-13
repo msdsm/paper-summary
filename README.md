@@ -9,10 +9,9 @@
 - 研究室サーバーのdokuwikiにまとめていたが、texのプレビューが使いにくかったのでこっちに移動することにした
 
 ## 論文
-- basic
+- vision-basic
     - u-net : U-Net(Convolutional Networks for Biomedical Image Segmentation)
     - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
-    - transformer : Transformer(Attention is all you need)
     - vision-transformer : VisionTransformer(AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE)
     - swin-transformer : SwinTransformer(Swin Transformer: Hierarchical Vision Transformer using Shifted Windows)
     - distillation : Distilling the Knowledge in a Neural Network
@@ -37,3 +36,6 @@
 - video
   - video-llm-survey : Video Understanding with Large Language Models: A Survey
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
+- llm
+  - keyword : LLMの用語集
+  - transformer : Transformer(Attention is all you need)
