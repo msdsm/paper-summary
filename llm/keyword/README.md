@@ -17,10 +17,13 @@
   - デモデータを収集してLLMに指示学習を行う
   - 比較するためのデータを収集して報酬モデルを訓練
   - 報酬モデルを用いて強化学習でLLMを最適化
+
+
 ![rlhf](./images/rlhf.png)
 (https://qiita.com/shibu_phys/items/91dc8d600da433d92231 より引用)
 
 ## LLM学習方法
+
 ![llm-trainiing](./images/llm-training.png)
 (https://qiita.com/shibu_phys/items/91dc8d600da433d92231 より引用)
 - 以下から成る
