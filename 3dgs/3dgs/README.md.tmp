@@ -62,6 +62,17 @@ $$
     \right)
 $$
 
+- 逆に、クォータニオン$\boldsymbol{q}=\left(q_x, q_y, q_z, q_w\right)$が得られたときに回転行列は以下で定まる
+
+$$
+R = 
+\begin{pmatrix}
+1 - 2(q_y^2 + q_z^2) & 2(q_x q_y - q_z q_w) & 2(q_x q_z + q_y q_w) \\
+2(q_x q_y + q_z q_w) & 1 - 2(q_x^2 + q_z^2) & 2(q_y q_z - q_x q_w) \\
+2(q_x q_z - q_y q_w) & 2(q_y q_z + q_x q_w) & 1 - 2(q_x^2 + q_y^2)
+\end{pmatrix}
+$$
+
 ## 3DGS
 ### Gaussianの導入
 - ワールド空間で定義された完全な3D共分散行列$\Sigma$で定義
@@ -110,7 +121,7 @@ $$
   - $\mathbf{\alpha}$ : 不透明度
   - $\Sigma$ : 共分散行列
     - 実際はスケール$\mathbf{s}$とクォータニオン$\mathbf{q}$
-  - $c$ : 色(SH係数が色を表す)
+  - $\mathbf{c}$ : 色(SH係数が色を表す)
     - 実際は球面調和パラメータ$\mathbf{h}$
 - よってガウシアンのパラメータは5つのベクトル(世界座標におけるガウシアンの分布点、クォータニオン(回転)、スケール、球面調和パラメータ、不透明度)
   - これら5つのベクトルがガウシアンの個数分だけ存在する
@@ -134,6 +145,57 @@ $$
 - section 6
 - 未理解
 
+## 全体の流れ
+- これまでの内容を簡潔にまとめる
+- 学習するパラメータは$N$個のガウシアンに対してそれぞれ以下の5つ
+  - $\boldsymbol{p}_{wi}$ : 3D Gaussian分布の中心点(世界座標)
+  - $\boldsymbol{q}_i$ : 3D Gaussianの回転行列をクォータニオンで表現したもの
+  - $\boldsymbol{s}_i$ : 3D Gaussianのスケール
+  - $\boldsymbol{h}_i$ : 3D Gaussianの球面調和パラメータ(色情報)
+  - $\boldsymbol{\alpha}_i$ : 3D Gaussianの不透明度
+- 以下が設定値(値を変えると投影される画像が変わるが3D世界には関係なく学習対象ではない)
+  - $\boldsymbol{R}_{cw}$ : カメラの回転
+  - $\boldsymbol{t}_{cw}$ : カメラの併進
+  - $\boldsymbol{K}$ : カメラの内部パラメータ
+- 全体の流れは以下
+  1. 3D Gaussianの中心点を2D画面に投影するときの座標値計算
+  2. 3D共分散の計算
+  3. 2D共分散の計算
+  4. 色を計算
+  5. 2D画像生成
+- 1についてはカメラの内部パラメータと回転と併進を用いて$\boldsymbol{p}_w$から$\boldsymbol{u}$を得る
+- 2については上述の通りスケールベクトルとクォータニオンから共分散行列を計算
+- 3については以下のようにして3D共分散行列$\Sigma$から$\Sigma^{\prime}$を得る
+$$
+\Sigma ^ {\prime} = J R_{cw} \Sigma R_{cw}^{\top} J ^ {\top}
+$$
+- Jはヤコビ行列で以下
+$$
+J = 
+\begin{pmatrix}
+\frac{f_x}{z} & 0 & - \frac{f_x x}{z^2} \\
+0 & \frac{f_y}{z} & - \frac{f_y y}{z^2}
+\end{pmatrix}
+$$
+- 4については以下
+$$
+c\left(r, h\right) = \sum_{l=0}^{l_{max}}\sum_{m=-l}^{l}h_{lm}Y_l^m\left(r\right)
+$$
+- $r$はカメラと3D Gaussianの間の単位方向ベクトルで、$Y_l^m$は$l$次元$m$番の球面基底
+- 5についてはカメラの方向から見た深度(Depth)に基づいて3D Gaussianをソートした後に以下を計算することで$j$番目のピクセルのRGB値$\gamma_j$を得る
+$$
+\gamma_j = \sum_{i=1}^{N}{\alpha_{ij}^{\prime}\left(\alpha_i, \Sigma_i, u_i, x_j\right)c_i \tau_{ij}}
+$$
+- $\alpha_{ij}^{\prime}$は$i$番目の3D Gaussianがピクセル$j$における不透明度を表していて以下で定まる
+$$
+\alpha_{ij}^{\prime}\left(\alpha_i, \Sigma_i, u_i, x_j\right) = \exp \left(-\frac{1}{2}\left(u_i - x_j\right)\Sigma_i^{\prime -1}\left(u_i - x_j\right)^{\top}\right) \alpha_i
+$$
+- $\tau_{ij}$は$i$番目の3D Gaussianが前方の3D Gaussianを透過してピクセル$j$に到達した際の減衰を示す係数である
+  - これを計算するためにdepth sortするということ
+$$
+\tau_{ij} = \prod_{k=1}^{i-1}\left(1-\alpha_{kj}^{\prime}\right)
+\tau_{1j} = 1
+$$
 ## 英単語メモ
 - Radiance Field methods : NeRF(Neural Radiance Field)のこと
 - interleave : 交互配置する
