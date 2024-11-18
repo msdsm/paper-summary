@@ -34,6 +34,7 @@
     - yonos-sr : You Only Need One Step: Fast Super-Resolution with Stable Diffusion via Scale Distillation
     - hmanet : HMANet: Hybrid Multi-Axis Aggregation Network for Image Super-Resolution
     - div2k : NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
+    - lsdir : LSDIR: A Large Scale Dataset for Image Restoration
 - video
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
 - vision-and-language
