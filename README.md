@@ -33,6 +33,7 @@
     - ipg : Image Processing GNN: Breaking Rigidity in Super-Resolution
     - yonos-sr : You Only Need One Step: Fast Super-Resolution with Stable Diffusion via Scale Distillation
     - hmanet : HMANet: Hybrid Multi-Axis Aggregation Network for Image Super-Resolution
+    - div2k : NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
 - video
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
 - vision-and-language
