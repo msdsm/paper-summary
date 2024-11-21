@@ -9,3 +9,10 @@
 - LLMの進化に合わせてLMMも変えた
   - LMMがLLMをベースにしているから
 - モデルサイズ大きくしたりデータセット変えたりした
+
+## 英語
+- exemplify : 例証する
+- proprietary : 独自の
+- diminish : 減少する
+- potent : 強力な
+- supercharging : 過給する
