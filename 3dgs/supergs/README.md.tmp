@@ -1,0 +1,131 @@
+# SuperGS: Super-Resolution 3D Gaussian Splatting via Latent Feature Field and Gradient-guided Splitting
+
+## 概要
+- タスクはHRNVS(High Resolution Novel View Synthesis)
+  - 低画質画像を入力として高画質の新視点画像を生成するタスク
+- SuperGS(Super Resolution 3DGS)を提案
+- 事前学習済みの低解像度のシーン表現を初期化として利用して2段階のcoarse to fine training frameworkを採用
+- MFGS(Multi-resolution Feature Gaussian Splatting)を提案
+  - latent feature fieldを活用して任意の位置でガウス特徴をサンプリング可能に 
+- GSS(Gradient-guided Selective Splitting)を提案
+  - プリミティブを適切にアップサンプリングして一貫性のある詳細な3D表現で高解像度シーンをレンダリング
+
+## HRNVSの課題
+- 普通の3DGSでは性能が大幅に低下
+- ガウスプリミティブを直接アップサンプリングすることが困難
+- 低解像の画像で最適化されたプリミティブは高解像度レンダリングにおいて粗すぎる
+- detailの欠如が目立つ
+- 各ガウスにSHパラメータを関連付けるとメモリ消費量が膨大
+- view consistency
+
+## 関連研究
+### NVS(Novel View Synthesis)
+- NeRF
+  - Mip-NeRF
+  - InstantNGP
+- 3DGS
+
+### 3D Scene Super Resolution, HRNVS(High Resolution Novel View Synthesis)
+- NeRF-SR
+- RefSR-NeRF
+- GaussianSR
+- SRGS
+
+
+## SuperGS
+![supergs](./images/supergs.png)
+(論文より引用)
+
+## MFGS(Multi-resolution Feature Gaussian Splatting)
+- InstangNGPから思いついたらしい
+- 複数の解像度のグリッドで特徴量ベクトルを取得する
+- 下図のようにハッシュテーブルをインデックスとして利用して線形補間を行うことで任意の位置でGaussian featuresにアクセスできる
+- 各Gaussianに対して異なる解像度のグリッドに格納された学習可能な特徴ベクトルを取得して線形補間を実行することでその特徴表現を導出する
+- 異なる解像度のグリッドはそれぞれ個別のハッシュテーブルに対応している
+- 今、グリッドの解像度が$L$レベルまであるとする
+- $i$番目のGaussianにおける$l$番目のレベルで補完された特徴ベクトルを$f_i^l$とする
+- このときgaussianの多解像度特徴ベクトル表現(multi resolution feature vector representation)は以下
+$$
+f_{i\_ vi}= f_i^1 \otimes f_i^2 \otimes \cdots \otimes f_i^L
+$$
+- このときグリッドに収められるように位置ベクトルはcontracted spaceにnormalizeする
+  - Mip-NeRF360の手法
+
+$$
+\mathrm{contract}\left(p_i\right) =
+\begin{cases}
+p_i, & \| p_i \| \leq 1, \\
+\left(2 - \frac{1}{\| p_i \|}\right)\left(\frac{p_i}{\| p_i \|}\right), & \| p_i \| \geq 1.
+\end{cases}
+$$
+- $p_i \in \mathbb{R}^3$は$i$番目のGaussianの位置
+- $\otimes$はconcatenation
+- $d_i$はdirection
+- 最後にview dependent featureを得るためにSH関数を用いてencodeして2層のMLPに入れる
+$$
+f_i = \mathrm{MLP}\left(f_{i\_ vi}\otimes \mathrm{SH}\left(d_i\right)\right)
+$$
+- カメラポーズ$v$が与えられたときにピクセル$p$のfeatureは以下
+
+$$
+F_{v, p} = \sum_{i\in N}f_i a_i \prod_{j=1}^{i-1}1-a_j
+$$
+
+![mfgs](./images/mfgs.png)
+(論文より引用)
+
+## GSS(Gradient-guided Selective Splitting)
+- smoothな領域ではGaussianを固定してComplexな領域ではgaussianを増やすアルゴリズム
+![gss](./images/gss.png)
+- 勾配とスケールがしきい値を超えるとcomplexとみなしてgaussianを増やす
+- 視点の個数を$M$, $k$番目の視点におけるlossを$\mathcal{L}^k$, ピクセル空間上のgaussianの座標を$u_i^k = \left(u_{i, x}^k, u_{i, y}^k\right)$とする
+- このとき100 training iterationごとに以下のaverage view space positional gradientを計算する
+$$
+\nabla_{u_i}\mathcal{L} = \frac{1}{M}\sum_{k=1}^M{\sqrt{\left(\frac{\partial\mathcal{L}^k}{\partial u_{i, x}^k}\right)^2 + \left(\frac{\partial\mathcal{L}^k}{\partial u_{i, y}^k}\right)^2}}
+$$
+- このとき判定基準は以下
+$$
+\nabla_{u_i}\mathcal{L} > \tau_p \quad \mathrm{AND} \quad \| S_i\| > \tau_S 
+$$
+- アルゴリズムは以下
+  - 祖なgaussianが$G_{coarse}$
+  - 増やされるのが$G_{fine}$
+  - splitting number $N_s$は$G_{fine}$に分割するときの個数であり、super resolutionの倍率に比例させて設定する
+
+![gss](./images/algorithm.png)
+
+## cross-view consistency constraint
+- lossはSRGSの提案手法で以下
+$$
+\begin{align}
+&\begin{split}
+\mathcal{L} &= \left(1 - \lambda_{reg}\right)\mathcal{L}_{hr} + \lambda_{reg}\mathcal{L}_{reg} \\
+\mathcal{L}_{hr} &= \left(1-\lambda_{ssim}\right)\mathcal{L}_1 \left(I_{hr}^{render}, I_{hr}^{pseudo}\right) + \lambda_{ssim}\mathcal{L}_{D-SSIM} \left(I_{hr}^{render}, I_{hr}^{pseudo}\right) \\
+\mathcal{L}_{reg} &= \left(1-\lambda_{ssim}\right)\mathcal{L}_1 \left(I_{lr}^{render}, I_{lr}^{gt}\right) + \lambda_{ssim}\mathcal{L}_{D-SSIM} \left(I_{lr}^{render}, I_{lr}^{gt}\right)
+\end{split}\end{align}
+$$
+- $I_{lr}^{gt}$は低画質画像の正解
+- $I_{hr}^{pseduo}$は$I_{lr}^{gt}$を2D pretrained SRモデルに入力したときの出力 
+- $I_{hr}^{render}$はこのモデルの出力
+- $I_{lr}^{render}$は出力をダウンサンプリングしたもの
+
+## results
+- データセットは13個
+  - Mip-NeRF360 : 9
+  - Deep Blending : 2
+  - Tanks&Temples : 2
+- 比較対象は以下
+![results](./images/results.png)
+## 英単語
+- autonomous navigation : 自律航行
+- coarse : 粗い、粗な
+- opacity : 不透明度
+- vanilla : 基本的な
+- bypass : 迂回する
+- granularity : 粒度
+- pseudo : 疑似
+- discrepancy : 不一致
+- isotropic : 等方性
+- anisotropic : 異方性(方向によって異なる)
+- notably : 特に
+- anchor : 錨(いかり)(船をとめるもの)

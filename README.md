@@ -37,6 +37,10 @@
     - div2k : NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
     - lsdir : LSDIR: A Large Scale Dataset for Image Restoration
     - df2k : DF2K
+- 3dgs
+  - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
+  - supergs : SuperGS: Super-Resolution 3D Gaussian Splatting via Latent Feature Field and
+Gradient-guided Splitting
 - video
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
 - vision-and-language
