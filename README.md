@@ -39,6 +39,7 @@
     - df2k : DF2K
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
+  - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
   - supergs : SuperGS: Super-Resolution 3D Gaussian Splatting via Latent Feature Field and
 Gradient-guided Splitting
 - video

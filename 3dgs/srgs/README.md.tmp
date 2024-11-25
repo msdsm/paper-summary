@@ -1,0 +1,105 @@
+# SRGS: Super-Resolution 3D Gaussian Splatting
+
+## 概要
+- タスクはHRNVS(High Resolution Novel View Synthesis)
+- 低画質画像で最適化するとsparsityとtexture deficiencyが問題
+- 上記の問題を解決するためにSRGSを提案
+  - Super-Resolution Gaussian Densification
+  - Texture-Guided Gaussian Learning
+- Mip-NeRF 360とTanks&TemplatesというデータセットにおいてSoTA達成
+- HRNVSで初めて3DGSを使用
+- 要約するとsplattingするときに解像度を上げて、2Dの学習済みモデルで生成したものを正解としたlossを定義しただけで、gaussianの最適化アルゴリズムは特にいじってない
+
+![arch](./images/arch.png)
+(論文より引用)
+
+## Related work
+- HRNVSに対してNeRFを使ったもの
+- NeRF-SR
+- CROC(sota)
+- Mip-NeRF
+
+## 3DGS復習
+- 3DGSは3D colored Gaussian primitivesの集合である$\mathcal{G}=\{\mathbf{g}_1, \mathbf{g}_2, \cdots, \mathbf{g}_N\}$を学習する
+- $\mathbf{g} \in \mathcal{G}$は以下のように書ける
+$$
+\mathbf{g}^{3D}\left(\mathbf{x}\mid\mathbf{\mu},\mathbf{\Sigma}\right)=\exp\left(-\frac{1}{2}\left(\mathbf{x}-\mathbf{\mu}\right)^{\top}\mathbf{\Sigma}^{-1}\left(\mathbf{x}-\mathbf{\mu}\right)\right)
+$$
+- $\Sigma$はscaling matrix $S$とrotation matrix $R$を用いて$\Sigma=RSS^{\top}R^{\top}$と分解できる
+- ここからRasterization renderingの説明
+- カメラポーズの情報としてextrinsic matrix $\mathbf{T}$とprojection matrix $\mathbf{K}$が与えられたときに2D screen spaceにおけるposition $\bm{\hat{\mu}}$と$\bm{\hat{\Sigma}}$は以下で定まる
+$$
+\bm{\hat{\mu}} = \mathbf{K}\mathbf{T}\left[\mathbf{\mu}, 1\right]^{\top}, 
+\quad \bm{\hat{\Sigma}}=\mathbf{J}\mathbf{T}\mathbf{\Sigma}\mathbf{T}^{\top}\mathbf{J}^{\top}
+$$
+- ここで$\mathbf{J}$はヤコビ行列
+- このときピクセル$u$でのgaussianは以下で定まる
+$$
+\mathbf{g}^{2D}\left(\mathbf{u} \mid \bm{\hat{\mu}}, \bm{\hat{\Sigma}}\right)
+= \exp \left(-\frac{1}{2}\left(\mathbf{u}-\bm{\hat{\mu}}\right)^{\top}\bm{\hat{\Sigma}}^{-1}\left(\mathbf{u}-\bm{\hat{\mu}}\right)\right)
+$$
+- このときピクセル$\mathbf{u}$の色は以下で定まる
+$$
+\begin{align}
+&\begin{split}
+\mathbf{C}\left(\mathbf{u}\right) &= \sum_{i \in N}T_i \mathbf{g}_i^{2D}\left(\mathbf{u}\mid\bm{\hat{\mu}}_i, \bm{\hat{\Sigma}}_i\right)\alpha_i\mathbf{c}_i\\
+T_i &= \prod_{j=1}^{i-1}\left(1 - \mathbf{g}_j^{2D}\left(\mathbf{u}\mid\bm{\hat{\mu}}_j, \bm{\hat{\Sigma}}_j\right)\alpha_j\right) 
+\end{split}
+\end{align}
+$$
+- lossは以下
+$$
+\mathcal{L}_{gs} = \left(1-\lambda\right)\mathcal{L}_1 + \lambda \mathcal{L}_{D-SSIM}
+$$
+- また、以下の勾配$\nabla g$が閾値を超えるGaussianをsplitting, cloningの対象とする
+$$
+\nabla g = \frac{1}{M^i} \sum_{k=1}^{M^i}\sqrt{\left(\frac{\partial L_k}{\partial u_{ndc, x}^{i,k}}\right)^2 + \left(\frac{\partial L_k}{\partial u_{ndc, y}^{i,k}}\right)^2} > \tau_{pos}
+$$
+- $M^i$は$i$番目のgaussianが関与している視点の個数
+
+## 提案手法1. Super-Resolution Gaussian Densification
+- Screen spaceに射影された2D Gaussian $\{ \mathcal{G}_k^{2D} \mid k = 1, \cdots, K \}$を超解像してHR novel views $\mathcal{I}_{HR}$を生成
+- lossについては生成された画像をaverage kernelでダウンサンプリングしてgtと比較する
+- あるピクセル$p$についてダウンサンプリング後の値は以下のように定義される
+$$
+\mathcal{F}^p = \frac{1}{s^2}\sum_{r \in \mathcal{R}_s\left(p\right)}I_{HR}^r
+$$
+- $s$は超解像の倍率で$\mathcal{R}_s$は$p$の近傍ピクセルの集合(これをsub pixelという)
+- このときlossは以下のように定義される
+$$
+\begin{align}
+&\begin{split}
+\mathcal{L}_1^{sp} &= \frac{1}{| \mathcal{p} |}\sum_{p \in \mathcal{p}}\|\mathcal{F}^p - \mathcal{I}_{LR}^p \| \\
+\mathcal{L}_{D-SSIM}^{sp} &= 1 - \mathrm{SSIM}\left(\mathcal{F}, I_{LR}\right)\\
+\mathcal{L}_{sp} &= \left(1-\lambda\right)\mathcal{L}_1^{sp} + \lambda \mathcal{L}_{D-SSIM}^{sp}
+\end{split}
+\end{align}
+$$
+
+## 提案手法2. Texture-Guided Gaussian Learning
+- 学習済み2D SRモデルの出力を正解とするアイディア
+- 学習済み2D SRモデルを$\mathcal{M}_s$として、その出力を$\mathcal{I}_{ref} = \mathcal{M}_s\left(\mathcal{I}_{LR}\right)$とする
+- このときlossを以下で定義
+$$
+\mathcal{L}_{tex} = \left(1 - \lambda\right)\mathcal{L}_1\left(\mathcal{I}_{ref}, \mathcal{I}_{HR}\right) + \lambda\mathcal{L}_{D-SSIM}\left(\mathcal{I}_{ref}, \mathcal{I}_{HR}\right)
+$$
+
+## 損失関数
+- 以上まとめて損失関数は以下
+$$
+\mathcal{L} = \left(1-\lambda_e\right)\mathcal{L}_{sp} + \lambda_e \mathcal{L}_{tex}
+$$
+
+## experiments
+- datasetはSYnthetic NeRF, Tanks & Temples, Mip-NeRF 360
+- 比較対象は以下
+![res1](./images/result1.png)
+![res2](./images/result2.png)
+(論文より引用)
+
+## 英単語
+- facilitate : 促進する
+- densification : 高密度化
+- outperform : 上回る
+- long-standing : 長く続いている
+- intricate : 複雑な
