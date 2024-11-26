@@ -1,0 +1,90 @@
+# GaussianSR: 3D Gaussian Super-Resolution with 2D Diffusion Prior
+
+## ソース
+- https://arxiv.org/pdf/2406.10111
+- https://chchnii.github.io/GaussianSR/
+
+## 概要
+- タスクはHRNVS(High Resolution Novel View Synthesis)
+- StableSR(diffusionベースの2DSR model)を使ってdistillation
+- diffusionでdistillationするとgaussianが余分に増えることが判明したのでdropoutアルゴリズムを導入
+- dropoutアルゴリズムは既存のgaussianを消すのではなくsplitするときに抑制するアイディア
+
+## GaussianSR
+- 図を見れば全てわかる
+![arch](./images/arch.png)
+- low resolutionでGS学習
+- それを初期状態としてHigh Resolution GSを作成
+- Renderingにパラメータ$\theta$を含む
+- そのため、HRの画像$x_0$はカメラ情報を$\pi$とすると$x_0=C_{\theta}(\pi)$でrenderingされる
+- renderingで得られたHR画像$x_0$にノイズを加えて$x_t$を得る
+  - diffusionのforward process
+  - $t$は一様分布からサンプリング
+- 得られた$x_t, t, x_{lr}(\pi)$を入力としてU-Netでdiffusionのreverse processでノイズを出力
+  - $x_{lr}(\pi)$はlow-resolution GSでrendering
+- 出力されたノイズと与えたノイズでlossを取る
+- $x_0$をダウンサンプリングして$x_{lr}(\pi)$とlossを取る
+- このlossから最適化
+- gaussianの増加を抑制するためにdrop outアルゴリズムある
+- 以上が全てだが、詳しくは以下
+
+### 3DGS Super-Resolution with SDS Optimization
+- SDS : Score Distillation Sampling
+- 3DGSでは以下の式を満たすGaussianを2つに分割
+$$
+|g|=\frac{1}{M}\sum_{M_i=1}^{M}\sqrt{\left(\frac{\partial \mathcal{L}_{M_i}}{\partial \mu_{ndc, x}^{k, M_i}}\right)^2 + \left(\frac{\partial \mathcal{L}_{M_i}}{\partial \mu_{ndc, y}^{k, M_i}}\right)^2} > \tau_{pos}
+$$
+- HR画像のrenderingではパラメータ$\theta$を使って$C_{\theta}(\pi)$とする
+- 論文中では以下のように説明されている
+  - C is the differentiable rendering function for the high resolution image at the given view point $\pi$
+- 実際にパラメータ$\theta$を使ってどのようにrenderingが計算されているかは一切記載されていない
+- コードも公開されていないのでわからない
+- このときdistillationのlossについては以下
+$$
+\nabla_{\theta}\mathcal{L}_{SDS}\left(\phi, C_{\theta}\right) = 
+\mathbb{E}_{t, \epsilon}\left[ w\left(t\right)\left(\epsilon_{\phi}\left(x_t ; x_{lr}, t\right) - \epsilon \right) \frac{\partial x}{\partial \theta} \right]
+$$
+- $\phi$は事前学習済みのSR diffusion modelのパラメータ
+- $\epsilon_{\phi}$はU-Net
+- $w(t)$はa weight function of different noise levels
+- さらに画像のlossも加えて全体のlossは以下のようになる
+$$
+\begin{align}
+&\begin{split}
+\mathcal{L}_{MSE} &= \| Downsample\left(x_0\right) - x_{lr} \| \\
+\mathcal{L} &= \mathcal{L}_{MSE} + \lambda\mathcal{L}_{SDS}
+\end{split}
+\end{align}
+$$
+
+### Diffusion Timestep Annealing
+- diffusionでdistillationするとgaussianを増やしすぎてしまう
+- 通常のdiffusionでは各iterationで$t$を一様分布$\mathcal{U}\left(1, T\right)$からサンプリングする($t \sim\mathcal{U}\left(1, T\right)$)
+- この手法ではiteration iで一様分布の下限を$1$ではなく$LB(i)$として以下で定義する
+$$
+\mathrm{LB}\left(i\right) = T - \frac{i}{N}
+$$
+- よって、$t \sim \mathcal{U}\left(\mathrm{LB}\left(i\right), T\right)$
+- 学習の前半の方に多くノイズが付与されるようにしている
+
+### Gaussian Dropout
+- Gaussianを増やしすぎないように抑制するもの
+- 上述の$|g|$の値が閾値を超えるものが$n$個あったとする
+- この集合を$G = \{ g_0, g_1, \cdots, g_n \} \in \mathbb{R}^n$とする
+- 確率$p$でセットされたマスク$M$を用いて$G$の部分集合$G^{\prime} \in \mathbb{R}^k$を作成
+- このとき選ばれた$G^{\prime}$だけ2倍にする
+- このdensificationを$\mathcal{D}$で表すと得られるgaussian $\hat{G}$は以下
+$$
+\hat{G} = \mathcal{D}\left(G^{\prime}\right) + \left(G - G^{\prime}\right),
+\ \mathrm{where}\ G^{\prime}=G \cdot M\left(p\right),
+\ M\left(p\right) = \begin{cases}
+0 & rand(G) < p \\
+1 & else
+\end{cases}
+$$
+- よって、定義より$\hat{G} \in \mathbb{R}^{n+k}$
+
+## 英単語
+- scarcity : 希少性
+- aforementioned : 前述の
+- analogous : 類似した
