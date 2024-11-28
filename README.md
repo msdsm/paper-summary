@@ -15,6 +15,7 @@
     - vision-transformer : VisionTransformer(AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE)
     - swin-transformer : SwinTransformer(Swin Transformer: Hierarchical Vision Transformer using Shifted Windows)
     - distillation : Distilling the Knowledge in a Neural Network
+    - maxvit : MaxViT: Multi-Axis Vision Transformer
 - diffusion
     - ddpm : Denoising Diffusion Probabilistc Models
     - palette : Palette: Image-to-Image Diffusion Models
