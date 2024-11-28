@@ -37,6 +37,8 @@
     - div2k : NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
     - lsdir : LSDIR: A Large Scale Dataset for Image Restoration
     - df2k : DF2K
+    - ntire-challenge-on-lfsr : NTIRE 2024 Challenge on Light Field Image Super-Resolution: Methods and Results
+    - epit : (EPIT)Learning Non-Local Spatial-Angular Correlation for Light Field Image Super-Resolution
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
