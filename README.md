@@ -34,6 +34,8 @@
     - ipg : Image Processing GNN: Breaking Rigidity in Super-Resolution
     - yonos-sr : You Only Need One Step: Fast Super-Resolution with Stable Diffusion via Scale Distillation
     - hmanet : HMANet: Hybrid Multi-Axis Aggregation Network for Image Super-Resolution
+    - diffusion-sr-survey : Diffusion Models, Image Super-Resolution
+And Everything: A Survey
     - tr-misr : TR-MISR: Multiimage Super-Resolution Based on Feature Fusion With Transformers
     - div2k : NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
     - lsdir : LSDIR: A Large Scale Dataset for Image Restoration
