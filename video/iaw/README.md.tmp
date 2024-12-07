@@ -1,0 +1,72 @@
+# Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
+
+# 概要
+- タスクは、aligning video segments to instructional diagrams
+  - 家具の組み立て動画と、家具の組み立て説明画像(図で説明している)
+  - 動画を与えた時に、対応する画像を選択肢から選択
+  - diagram(説明書画像)を与えた時に対応する動画を選択
+- IAW(IKEA Assembly in the Wild)というデータセット作成
+- 対照学習(contrastive learning)やった
+  - CLIPと全く同じことを(video, image)でやっただけ
+- lossは独自のものを導入
+  - 画像が時系列順になっていたりなどいろいろ特有な制約があるから
+
+## Video-Instruction Alignment
+- やりたいことの定式化
+- $N$個のvideo clip $\{V_i\}_{i=1}^N$, $M$個のinstructional diagrams $\{I_j\}_{j=1}^M$が与えられる
+- 画像と動画をそれぞれencoderにいれて同じ次元のembedding spaceにprojectionした時のベクトルを$f^V$, $f^I$とする
+- 2つのベクトルの類似度を計算する関数を$f_{sim}$とする
+- このとき、動画が与えられて対応する画像を選択するのは以下のように記述できる
+$$
+j^* = \argmax_{j=1,\cdots, M} f_{sim}\left(f^V, f^I_j\right)
+$$
+- 逆に、画像が与えられて動画を選択するのは以下
+$$
+i^* = \argmax_{i=1, \cdots, N} f_{sim} \left(f^V_i, f^I\right)
+$$
+
+## Architecture
+![arch](./images/arch.png)
+- video, imageをそれぞれvideo encoder, image encoderに入れる
+- SPRFをconcatenateしてprojectionで次元を揃えて対照学習
+
+## Sinusoidal Progress Rate Feature
+- positional encoding的なこと
+- videoに対しては以下
+$$
+r^V = \frac{\left(t_{start} + t_{end}\right)}{2 t_{duration}}
+$$
+- $j$番目のimageに対しては以下
+$$
+r^I = \frac{j}{M}
+$$
+## loss
+- 確率は以下
+![01](./images/01.png)
+(論文より引用)
+- このとき普通の対照学習では損失以下
+![02](./images/02.png)
+(論文より引用)
+- この論文では以下の3つのlossを使う
+  - Video-Diagram Contrastive Loss
+  - Video-Manual Contrastive Loss
+  - Intra-Manual Contrastive Loss
+### Video-Diagram Contrastive Loss
+![03](./images/03.png)
+(論文より引用)
+- $D_{JS}$はJensen-Shannon divergence
+
+### Video-Manual Contrastive Loss
+![04](./images/04.png)
+(論文より引用)
+
+
+### Intra-Manual Contrastive Loss
+![05](./images/05.png)
+(論文より引用)
+![06](./images/06.png)
+(論文より引用)
+
+## 英単語
+- cardinality : 基数、濃度
+- sinusoidal : 正弦波

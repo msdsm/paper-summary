@@ -51,6 +51,7 @@ Diffusion Priors
 Gradient-guided Splitting
 - video
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
+  - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
 - vision-and-language
   - video-llm-survey : Video Understanding with Large Language Models: A Survey
   - llava : Visual Instruction Tuning
