@@ -1,0 +1,46 @@
+# NeRF-SR: High Quality Neural Radiance Fields using Supersampling
+- https://arxiv.org/pdf/2112.01759
+
+## 概要
+- タスクはHRNVSだけど微妙に違う
+  - 複数視点の大量のLR画像画と数枚のHR画像
+  - 補助としてHRの正解が一部与えられている
+- rayをSRの倍率に合わせて増やす
+- ray増やしたことによってHRを生成可能
+- それだとまだdetailが欠如するからrefinement networkに入れる, このときに別視点の正解のHRを入れる
+
+## NeRF-SR
+- 下図のようにSuper samplingとRefinementから構成される
+- Super samplingは複数枚LRからHRを生成するようにNeRF学習する
+- Refinementは生成したHRのdetailを綺麗にするためのnetworkで補助として別視点HRを与える
+  - そのため入出力のサイズは変わらない
+![arch](./images/arch.png)
+(元論文より引用)
+
+### Super sampling
+- $r$倍の超解像をやるなら$r^2$本のrayをうつ
+- 下図は2倍の例
+![ray](./images/ray.png)
+- このとき、普通のNeRFのlossは以下
+![nerf](./images/nerf.png)
+- NeRF-SRのlossは以下
+![nerf](./images/nerfsr.png)
+- sub pixelの平均を計算している
+- $\mathcal{R}^{\prime}$はピクセル$p$まわりのsub pixelを表す集合
+  - この集合の元の個数が$r^2$と一致する
+
+### Refinement
+![refinement](./images/refinement.png)
+- 関連研究はRefSR(reference-based image super resolution)
+
+## 英語
+- ill-posed problem : 不良設定問題(数学用語)
+- well-posed problem : 良設定問題
+  - 解が存在して, 解が一意であり, パラメータが連続的に変化すると解も連続的に変化するもの
+- hallucinate : 幻覚を起こす
+- prerequisite : 必要条件, 用例
+- immersive : 没入型
+- immunity : 免疫
+- negligible : 無視できる
+- auxiliary : 補助的な
+- plausible : もっともらしい

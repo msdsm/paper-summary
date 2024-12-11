@@ -51,6 +51,7 @@ Diffusion Priors
 Gradient-guided Splitting
 - nerf
   - nerf : NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis
+  - nerf-sr : NeRF-SR: High Quality Neural Radiance Fields using Supersampling
 - video
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
   - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
