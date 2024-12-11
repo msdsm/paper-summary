@@ -1,0 +1,75 @@
+# NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis
+
+## 概要
+- タスクはNVS(Novel View Synthesis)
+- Neural Networkで3d Representationした
+
+## NeRF(Neural Radiance Fields)
+- NeRFは複数視点の画像データから任意の新視点画像を生成することを目的とする
+- 3Dモデル構築部分をNeural Networkでやる
+  - 入力 : 位置ベクトル$\mathbf{x}=(x, y, z)$と方向$(\theta,\phi)$
+    - 方向は3次元ベクトル$\mathbf{d}$として扱う
+    - これを単位ベクトルとして扱うので、制約が加わって自由度2となる
+    - これで結局入力は5次元となり論文中では5D neural networkと記述されている
+  - 出力 : 色ベクトル$\mathbf{c}=(r, g, b)$と密度$\sigma$
+- 画像生成の際にcamera rayを打ってそのray上から数点サンプリングして得られた座標とcamera rayから求められる方向をNNに入れて密度と色の集合を得る
+- 得られた密度と色の集合からrenderingを計算して画像上のピクセルの色が決まる
+
+### Network
+- networkはfully-connected network
+- 密度$\sigma$は位置$\mathbf{x}$だけに依存して、色$\mathbf{c}$は位置$\mathbf{x}$と方向$\mathbf{d}$に依存する
+- その依存関係を表現するために最初は位置だけ入力して、密度を出力したあとに方向を入力するようにしている
+- また、$\gamma$はpositonal encodingでありスカラーを$2L$次元にする写像
+![arch](./images/arch.png)
+(元論文より引用)
+
+### volume rendering
+- camera ray $\mathbf{r}\left(t\right)=\mathbf{o}+t\mathbf{d}$を打った際に色計算は理論的には以下
+$$
+\begin{align}
+&\begin{split}
+C\left(\mathbf{r}\right) &= \int_{t_n}^{t_f}T\left(t\right)\sigma\left(\mathbf{r}\left(t\right)\right)\mathbf{c}\left(\mathbf{r}\left(t\right),\mathbf{d}\right)dt \\
+T\left(t\right) &= \exp \left(- \int_{t_n}^{t}\sigma\left(\mathbf{r}\left(s\right)\right)ds\right)
+\end{split}
+\end{align}
+$$
+- $t_n, t_f$がrayの計算範囲(それぞれnear, far)
+- $T(t)$は累積透過率を表す(遠くに行けば行くほど弱くなる)
+- この上式を計算するためにサンプリングを行う
+- $N$個の点をサンプリングする際は$[t_n, t_f]$を等間隔の$N$個の区間に分割して、各区間で独立に一様分布でサンプリングする
+- つまり、$i$個目の点$t_i$は以下のようにサンプリングする
+$$
+t_i \sim \mathcal{U}\left(t_n + \frac{i-1}{N}\left(t_f -t_n\right), t_n + \frac{i}{N}\left(t_f -t_n\right)\right)
+$$
+- これを用いて以下のようにrendering
+$$
+\begin{align}
+&\begin{split}
+C\left(\mathbf{r}\right) &= \sum_{i=1}^{N}T_i\left(1-\exp\left(-\sigma_i\delta_i\right)\right)\mathbf{c}_i\\
+ T_i &= \exp\left(-\sum_{j=1}^{i-1}\sigma_j \delta_j\right) \\
+ \delta_i &= t_{i+1} - t_i 
+\end{split}
+\end{align}
+$$
+
+### positonal encoding
+$$
+\begin{align}
+&\begin{split}
+\gamma &: \mathbb{R}\to \mathbb{R}^{2L}\\
+\gamma\left(p\right) &= \left(\sin\left(2^0\pi p\right), \cos\left(2^0\pi p\right), \cdots, (\sin\left(2^{L-1}\pi p\right), \cos\left(2^{L-1}\pi p\right)\right)
+\end{split}
+\end{align}
+$$
+
+
+
+## 英語
+- quadrature : 求積法
+- transmittance : 透過率
+- cartesian coordinate : 直交座標(デカルト座標)
+- prohibitive : 法外な
+- discretize : 離散化する
+- march : 行進する、前進する、規則正しく並んでいる
+- radiance : 輝き
+- long standing : 長い間存在している

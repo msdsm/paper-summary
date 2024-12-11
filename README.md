@@ -49,6 +49,8 @@ And Everything: A Survey
 Diffusion Priors
   - supergs : SuperGS: Super-Resolution 3D Gaussian Splatting via Latent Feature Field and
 Gradient-guided Splitting
+- nerf
+  - nerf : NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis
 - video
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
   - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
