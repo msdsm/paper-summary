@@ -1,12 +1,6 @@
 # 論文まとめ
-- 研究室サーバーのdokuwikiからまだ移行中
+- githubのmarkdownプレビューだと数式が崩壊してしまうため、pdf参照
 
-## 重要事項
-- githubのmarkdownプレビューだと数式が崩壊してしまうため、pdfを見てください
-- 何かおかしいところがあれば、issueを切って伝えてください
-
-## 背景
-- 研究室サーバーのdokuwikiにまとめていたが、texのプレビューが使いにくかったのでこっちに移動することにした
 
 ## 論文
 - vision-basic
@@ -42,6 +36,7 @@ And Everything: A Survey
     - df2k : DF2K
     - ntire-challenge-on-lfsr : NTIRE 2024 Challenge on Light Field Image Super-Resolution: Methods and Results
     - epit : (EPIT)Learning Non-Local Spatial-Angular Correlation for Light Field Image Super-Resolution
+    - pixel-shuffle : Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
