@@ -37,6 +37,7 @@ And Everything: A Survey
     - ntire-challenge-on-lfsr : NTIRE 2024 Challenge on Light Field Image Super-Resolution: Methods and Results
     - epit : (EPIT)Learning Non-Local Spatial-Angular Correlation for Light Field Image Super-Resolution
     - pixel-shuffle : Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network
+    - datsr : Reference-based Image Super-Resolution with Deformable Attention Transformer
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
