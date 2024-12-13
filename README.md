@@ -55,6 +55,10 @@ Gradient-guided Splitting
 - vision-and-language
   - video-llm-survey : Video Understanding with Large Language Models: A Survey
   - llava : Visual Instruction Tuning
+  - llava-next-video : blog
+  - llava-next-stronger : blog
+  - video-llm-survey : 途中
+  - llava-video : VIDEO INSTRUCTION TUNING WITH SYNTHETIC DATA
 - llm
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
