@@ -1,0 +1,30 @@
+# Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network
+- https://arxiv.org/pdf/1609.05158
+## 概要
+- pixelshuffleを初めて提案した論文
+## architecture
+- CNNからsub-pixel convolution layer
+$$
+\begin{align}
+&\begin{split}
+f^l\left(I^{LR}; W_{1:l}, b_{1:l}\right) &= \phi \left(W_l * f^{l-1}\left(I^{LR}\right)+b_l\right)\\
+I^{SR} &= f^L\left(I^{LR}\right) = \mathcal{PS}\left(W_L * f^{L-1}\left(I^{LR}\right) + b_L\right)
+\end{split}
+\end{align}
+$$
+- $L$層のCNNを通して$I^{LR} \in \mathbb{R}^{H \times W \times C}$からfeature map $f \mathbb{R}^{H \times W \times r^2C}$を得る
+- これをsub pixel convolution layer(pixel shuflle)に入れると$I^{HR}\in\mathbb{R}^{rH \times rW \times C}$となる
+
+## downscale
+- $I^{HR}$から$I^{LR}$を作成する方法
+- Gaussian filterを使ったあとにdownsample
+
+## sub-pixel convolution layer
+- pixel shuffle
+- $\mathcal{PS} : \mathbb{R}^{H \times W \times r^2C} \to \mathbb{R}^{rH \times rW \times C}$
+- 配置方法については画像を見ればわかる
+![pixel-shuffle](./images/pixel-shuffle.png)
+- 数学的には以下
+$$
+\mathcal{PS}\left(T\right)_{x, y, c} = T_{\lfloor\frac{x}{r}\rfloor, \lfloor \frac{y}{r}\rfloor, C \cdot r \cdot \mathrm{mod}\left(y, r\right) + C \cdot \mathrm{mod}\left(x, r\right) + c}
+$$

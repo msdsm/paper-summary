@@ -1,12 +1,6 @@
 # 論文まとめ
-- 研究室サーバーのdokuwikiからまだ移行中
+- githubのmarkdownプレビューだと数式が崩壊してしまうため、pdf参照
 
-## 重要事項
-- githubのmarkdownプレビューだと数式が崩壊してしまうため、pdfを見てください
-- 何かおかしいところがあれば、issueを切って伝えてください
-
-## 背景
-- 研究室サーバーのdokuwikiにまとめていたが、texのプレビューが使いにくかったのでこっちに移動することにした
 
 ## 論文
 - vision-basic
@@ -42,6 +36,8 @@ And Everything: A Survey
     - df2k : DF2K
     - ntire-challenge-on-lfsr : NTIRE 2024 Challenge on Light Field Image Super-Resolution: Methods and Results
     - epit : (EPIT)Learning Non-Local Spatial-Angular Correlation for Light Field Image Super-Resolution
+    - pixel-shuffle : Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network
+    - datsr : Reference-based Image Super-Resolution with Deformable Attention Transformer
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
@@ -52,12 +48,16 @@ Gradient-guided Splitting
 - nerf
   - nerf : NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis
   - nerf-sr : NeRF-SR: High Quality Neural Radiance Fields using Supersampling
+  - mip-nerf : Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields
 - video
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
   - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
 - vision-and-language
-  - video-llm-survey : Video Understanding with Large Language Models: A Survey
+  - video-llm-survey : Video Understanding with Large Language Models: A Survey(途中)
   - llava : Visual Instruction Tuning
+  - llava-next-video : blog
+  - llava-next-stronger : blog
+  - llava-video : VIDEO INSTRUCTION TUNING WITH SYNTHETIC DATA
 - llm
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
