@@ -42,6 +42,7 @@ And Everything: A Survey
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
   - gaussiansr : GaussianSR: 3D Gaussian Super-Resolution with 2D
+  - supergaussian : SuperGaussian: Repurposing Video Models for 3D Super Resolution
 Diffusion Priors
   - supergs : SuperGS: Super-Resolution 3D Gaussian Splatting via Latent Feature Field and
 Gradient-guided Splitting
