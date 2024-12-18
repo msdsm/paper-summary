@@ -16,3 +16,10 @@
 - visual tokensとtextをTCRに入れる
 - 内部はcross attention
 - video, text conditionをTCRに入れて得られた固定長のvideo tokenとpromptをLLMに入れる
+
+
+## 英語
+- ingest : 接種する, 吸収する
+- demonstrably : 明らかに、はっきりと、確実に
+- irrespective : 関係なく
+- semantically : 意味的に
