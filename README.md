@@ -5,7 +5,6 @@
 ## 論文
 - vision-basic
     - u-net : U-Net(Convolutional Networks for Biomedical Image Segmentation)
-    - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
     - vision-transformer : VisionTransformer(AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE)
     - swin-transformer : SwinTransformer(Swin Transformer: Hierarchical Vision Transformer using Shifted Windows)
     - distillation : Distilling the Knowledge in a Neural Network
@@ -54,11 +53,14 @@ Gradient-guided Splitting
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
   - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
 - vision-and-language
+  - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
   - video-llm-survey : Video Understanding with Large Language Models: A Survey(途中)
   - llava : Visual Instruction Tuning
   - llava-next-video : blog
   - llava-next-stronger : blog
   - llava-video : VIDEO INSTRUCTION TUNING WITH SYNTHETIC DATA
+  - long-vlm : LongVLM: Efficient Long Video Understanding via Large Language Models(ECCV2024)
+  - tcr : Text-Conditioned Resampler For Long Form Video Understanding(ECCV2024)
 - llm
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
