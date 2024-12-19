@@ -54,6 +54,8 @@ Gradient-guided Splitting
   - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
 - vision-and-language
   - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
+  - blip : BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation
+  - blip2 : BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
   - video-llm-survey : Video Understanding with Large Language Models: A Survey(途中)
   - llava : Visual Instruction Tuning
   - llava-next-video : blog
