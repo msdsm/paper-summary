@@ -10,7 +10,7 @@
 - 画像からデータセット自動生成(Captioner)
 
 ## MED
-![./images](med.png)
+![med](./images/med.png)
 - Bi Self-AttはBidirectional Self Attention
     - 普通のself attentionのこと
     - 現在の状態が過去の状態と未来の状態の両方から計算されることからbidirectional
@@ -38,7 +38,7 @@
 - 以上のように2つの入力(画像, テキスト)に対して4つのネットワークから構成されて同時に3つのタスクを解いている
 
 ## CapFilt
-![./images/capfilt.png](./images/capflit.png)
+![./images/capfilt.png](./images/capfilt.png)
 - 図を見ればわかる
 - Filter, Captionerという2つのネットワークから構成
 - 左上が入力されるデータセットであり、multimodal mixture of encoder decoderが上述のMED
