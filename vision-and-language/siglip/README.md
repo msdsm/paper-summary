@@ -1,5 +1,7 @@
 # Sigmoid Loss for Language Image Pre-Training
 
+- https://arxiv.org/pdf/2303.15343
+
 ## 概要
 - vision and languageのpre-trainingの話
 - SigLIPを提案
