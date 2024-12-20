@@ -49,6 +49,7 @@ Gradient-guided Splitting
   - nerf : NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis
   - nerf-sr : NeRF-SR: High Quality Neural Radiance Fields using Supersampling
   - mip-nerf : Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields
+  - crop : Cross-Guided Optimization of Radiance Fields with Multi-View Image Super-Resolution for High-Resolution Novel View Synthesis
 - video
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
   - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
@@ -57,6 +58,7 @@ Gradient-guided Splitting
   - blip : BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation
   - blip2 : BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
   - siglip : Sigmoid Loss for Language Image Pre-Training
+  - Flamingo: a Visual Language Model for Few-Shot Learning
   - video-llm-survey : Video Understanding with Large Language Models: A Survey(途中)
   - llava : Visual Instruction Tuning
   - llava-next-video : blog
