@@ -67,3 +67,4 @@ Gradient-guided Splitting
 - llm
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
+  - lora : LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS
