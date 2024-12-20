@@ -37,6 +37,7 @@ And Everything: A Survey
     - epit : (EPIT)Learning Non-Local Spatial-Angular Correlation for Light Field Image Super-Resolution
     - pixel-shuffle : Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network
     - datsr : Reference-based Image Super-Resolution with Deformable Attention Transformer
+    - ais2024challenge-survey : Real-Time 4K Super-Resolution of Compressed AVIF Images. AIS 2024 Challenge Survey
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
