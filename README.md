@@ -38,6 +38,9 @@ And Everything: A Survey
     - pixel-shuffle : Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network
     - datsr : Reference-based Image Super-Resolution with Deformable Attention Transformer
     - ais2024challenge-survey : Real-Time 4K Super-Resolution of Compressed AVIF Images. AIS 2024 Challenge Survey
+- image-restoration
+  - aioir-survey : A Survey on All-in-One Image Restoration: Taxonomy, Evaluation and Future Trends
+  - ram : Restore Anything with Masks: Leveraging Mask Image Modeling for Blind All-in-One Image Restoration
 - deblurring
   - image-deblurring-survey : Deep Image Deblurring: A Survey
   - adarevd : AdaRevD: Adaptive Patch Exiting Reversible Decoder Pushes the Limit of Image Deblurring
