@@ -1,0 +1,54 @@
+# A Survey on All-in-One Image Restoration: Taxonomy, Evaluation and Future Trends
+
+- https://arxiv.org/pdf/2410.15067
+
+## AiOIR(All-in-One Image Restoration)
+- image degradationとしてnoise, blur, weather effectsなど様々
+- そのすべてのimage degradationに対応するimage restorationの手法をAll-in-One Image Restoration(AiOIR)という
+- All in oneでないImage Restorationとしては以下などがある
+  - denoising
+  - dehazing
+  - desnowing
+  - deraining
+  - deblurring
+  - low-light image enhancement
+- これらはすべてAiOIRのsub task
+
+## Dataset
+- Super Resolution
+  - BSD100
+  - Manga109
+  - Urban100
+- draining
+  - RainDrop
+  - Outdoor-Rain
+  - SPA
+  - Rain-100H
+- deblurring
+  - GoPro
+  - HIDE
+- low-light image enhancement
+  - LOL
+
+## タスクの分類
+- blind / non-blind
+  - image degradationの計算方法が事前にわかっているものをnon-blindという
+    - noiseならgausisan distributionのパラメータ
+    - blurならblur kernelの値
+  - 逆に事前にわからないものをblindという
+- Open-set/Closed-set
+  - test dataに含まれるimage degradationの方法が必ずtrain dataにも含まれているものをClosed-setという
+  - 逆にtrain dataには含まれていないiamg edegradationがtest dataに現れるデータセットをClosed-setという
+
+## model
+- MoE(Mixture of Experts)
+  - https://qiita.com/cvusk/items/c5f9622d7b87c36bf4f5
+- prompt-based, MoE-based, Multimodal AiOIRに分類
+![model](./images/model.png)
+- 以下データセット
+![dataset](./images/dataset.png)
+
+## 英語
+- elucidate : 解明する
+- mediocre : 平凡な
+- unforeseen : 予期せぬ
