@@ -1,0 +1,97 @@
+# AdaRevD: Adaptive Patch Exiting Reversible Decoder Pushes the Limit of Image Deblurring(CVPR2024)
+
+- https://arxiv.org/pdf/2406.09135
+- https://github.com/INVOKERer/AdaRevD/tree/master
+- https://github.com/DeepMed-Lab-ECNU/Single-Image-Deblur
+
+
+## Related work
+- Deblurring Methods
+  - DeepDeblur
+  - DMPHN
+  - MPRNet
+  - NAFNet
+  - Uformer
+  - Stripformer
+  - Restormer
+  - DeepRFT
+  - MRLPFNet
+- Reversible Architectures
+  - Reversible Residual Block(The reversible residual network: Backpropagation without storing activations. In Proc. NeurIPS, 2017)
+  - Rev-ViT
+  - RevBiFPN
+  - BiFPN
+  - RevCol
+- Adaptive Inference
+  - Slimmable networks
+  - AdaDSR
+  - ClassSR
+  - APE-SR
+
+## Network
+![arch1](./images/arch1.png)
+![arch2](./images/arch2.png)
+(AdaRevD全体図, 論文より引用)
+- 近年のdeblurring networkは4つから構成される
+  - head
+  - encoder
+  - decoder
+  - tail
+- headは$3 \times 3$のconvolution layer
+- tailの出力はblur patternで、この出力を元画像に足し合わせることでdeblurred imageを得る
+- 入力であるblur image $B$から出力のrestored sharp image$\hat{S}$を得るまでは以下
+
+$$
+\begin{align}
+&\begin{split}
+h &= \mathcal{H}\left(B;\Theta_{head}\right)\\
+e_1, e_2, \cdots, e_N &= \mathcal{E}\left(h;\Theta_{enc}\right)\\
+d_1 &= \mathcal{D}\left(e_1, e_2, \cdots, e_n;\Theta_{dec}\right)\\
+t &= \mathcal{T}\left(d_1; \Theta_{tail}\right)\\
+\hat{S} &= B + t
+\end{split}
+\end{align}
+$$
+- AdaRevDではmulti-decoder structure
+- $j$番目のsub-decoderのLevel $i$を$d_i^j$とすると以下のようにかける
+$$
+\begin{align}
+&\begin{split}
+h &= \mathcal{H}\left(B;\Theta_{head}\right)\\
+e_1, e_2, \cdots, e_N &= \mathcal{E}\left(h;\Theta_{enc}\right)\\
+d_1^1, \cdots, d_{N-1}^1 &= \mathcal{D}^1\left(e_1, e_2, \cdots, e_n;\Theta_{dec}^1\right)\\
+d_1^k, \cdots, d_{N-1}^k &= \mathcal{D}^k\left(d_1^{k-1}, \cdots, d_{N-1}^{k-1}, e_N; \Theta_{dec}^k\right)\\
+t^j &= \mathcal{T}^j\left(d_1^j; \Theta_{tail}^j\right)\\
+\hat{S}^j &= B + t^j
+\end{split}
+\end{align}
+$$
+- decoderはReversible Architecture
+
+### Adaptive Classifier
+- degradation degreeを多クラス分類する
+- これもtrainの対象
+### loss
+- decoder training phaseは以下
+$$
+\begin{align}
+&\begin{split}
+L_m &= L_1 + 0.01 L_{fr} \\
+L_1 &= \frac{1}{N}\sum_{j=1}^K \| \hat{S}^j - S \|_1 \\
+L_{fr} &= \frac{1}{K} \sum_{j=1}^K \| \mathcal{F}\left(\hat{S}^j\right) - \mathcal{F}\left(S\right) \|_1
+\end{split}
+\end{align}
+$$
+- $\mathcal{F}$は2D Fast Fourier Transform
+- classifier training phaseは以下
+$$
+L_c = CrossEntropy(\tilde{c}, \hat{c})
+$$
+
+## 英語
+- disentangle : もつれを解く, 複雑な問題や状況が自然に整理される
+- delicately : 繊細に
+- inaugural : 新任の、就任の
+- endeavor : 努力
+- slimmable : スリムな
+- conducive : 助かる, 貢献する, 助けとなる
