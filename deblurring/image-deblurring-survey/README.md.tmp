@@ -1,0 +1,57 @@
+# Deep Image Deblurring: A Survey
+- https://arxiv.org/pdf/2201.10700
+
+
+## Problem Formulation
+- 元画像を$I_s$, blurred imageを$I_b$の関係はパラメータ$\theta_\eta$を用いて
+$$
+I_b = \Phi \left(I_s; \theta_{\eta}\right)
+$$
+- 解きたいタスクはこの逆写像を求めることである
+$$
+I_{db} = \Phi^{-1}\left(I_b ; \theta_{\eta}\right)
+$$
+- $I_{db}$はdeblurred imageであり$I_s$を推定したもの
+
+## Blur
+- 4種類ある
+    - Motion Blur
+    - Out-of-focus Blur
+    - Gaussian Blur
+    - Mixed Blur
+- 一般的に以下の式でかける
+$$
+I_b = K * I_s + \theta_{\mu}
+$$
+- $K$はblur kaernel
+- $\theta_{\mu}$はgaussian noise
+- deblurの際にkernelが事前にわかっているものをNon-Blind Deblurringという
+- 逆にkernelがわからないものをBlind Deblurringという
+
+## IQA(Image Quality Assessment)
+- Full-Reference Metrics(正解画像gtが与えられている場合の評価方法)
+    - PSNR
+    - SSIM
+    - WSNR
+    - MS-SSIM
+    - IFC
+    - NQM
+    - UIQI
+    - VIF
+    - LPIPS
+- No-Reference Metrics
+    - BIQI
+    - BLINDS2
+    - BRISQUE
+    - CORNIA
+    - DIIVINE
+    - NIQE
+    - SSEQ
+
+## network
+- CNN, RNN, ResNet, ViTベースの手法がある
+![model](./images/model.png)
+(論文より引用)
+
+## 英語
+- taxonomy : 分類学
