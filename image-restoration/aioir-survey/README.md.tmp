@@ -38,7 +38,7 @@
   - 逆に事前にわからないものをblindという
 - Open-set/Closed-set
   - test dataに含まれるimage degradationの方法が必ずtrain dataにも含まれているものをClosed-setという
-  - 逆にtrain dataには含まれていないiamg edegradationがtest dataに現れるデータセットをClosed-setという
+  - 逆にtrain dataには含まれていないiamg edegradationがtest dataに現れるデータセットをOpen-setという
 
 ## model
 - MoE(Mixture of Experts)
