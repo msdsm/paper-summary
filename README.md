@@ -18,6 +18,7 @@
     - glide : Guided Language to Image Diffusion for Generation and Editing
     - ldm : Latent Diffusion Model(Stable diffusion)
     - cdm : Cascaded Diffusion Model
+    - inpaint-survey : Deep Learning-based Image and Video Inpainting: A Survey
 - super-resolution
     - srcnn-vdsr-fsrcnn-fspcn : 超解像の歴史(CNNあたりからGAN登場まで)
     - swinir : SwinIR(SwinIR: Image Restoration Using Swin Transformer)
