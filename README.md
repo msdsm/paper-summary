@@ -9,6 +9,8 @@
     - swin-transformer : SwinTransformer(Swin Transformer: Hierarchical Vision Transformer using Shifted Windows)
     - distillation : Distilling the Knowledge in a Neural Network
     - maxvit : MaxViT: Multi-Axis Vision Transformer
+    - mae : Masked Autoencoders Are Scalable Vision Learners
+    - simmim : SimMIM: a Simple Framework for Masked Image Modeling
 - diffusion
     - ddpm : Denoising Diffusion Probabilistc Models
     - palette : Palette: Image-to-Image Diffusion Models
