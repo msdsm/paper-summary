@@ -1,0 +1,60 @@
+# DeepSeek-V3 Technical Report
+
+
+- https://arxiv.org/pdf/2412.19437
+
+## 概要
+- DeepSeek-V3の提案と学習方法記載
+- DeepSeek-V3はTransformerベースのLLMでMulti-head Latent Attention(MLA)とMixture-of-Experts(MoE)を採用したもの
+- 超軽量なのにもかかわらずgpt4o, claude-3.5を上回る性能
+- 事後学習はCoT(Chain-of-Thought)モデルのDeepSeek R1から蒸留
+
+## 全体図
+- 以下全体図
+![arch](./images/arch.png)
+
+## Multi-head Latent Attention (MLA)
+- 上の図がわかりやすい
+- key, valueは以下のようにして次元の小さい潜在変数に変換してから復元したものを使ってattentionを計算する
+![kv](./images/kv.png)
+- このときkv cacheは青字の潜在次元の変数だけをキャッシュしておけばよくメモリ削減になる
+- $h_t \in \mathbb{R}^d$ : $t$番目のtokenに対応する入力
+- $n_h$ : the number of attention heads
+- $d_h$ : dimension per head
+- $c_t^{kv} \in \mathbb{R}^{d_c}$ : compressed latent vector for keys and values ($d_c \ll d_h n_h$)
+- $d_c$ : KV compression dimension
+- $W^{DKV} \in \mathbb{R}^{d_c \times d}$ : down-projection matrix
+- $W^{UK} \in \mathbb{R}^{d_h n_h \times d_c}$ : up-projection matrix for keys
+- $W^{UV} \in \mathbb{R}^{d_h n_h \times d_c}$ : up-projection matrix for values
+- $W^{KR} \in \mathbb{R}^{d_h^R \times d}$
+- $\mathrm{RoPE}\left(\cdot\right)$ : RoPE matrices
+- queryについても同様にlow-rank compressionにより以下のようにして得られる
+![query](./images/query.png)
+- $c_t^Q \in \mathbb{R}^{d_c^{\prime}}$ : compressed latent vector for queries ($d_c^{\prime} \ll d_h n_h$)
+- $d_c^{\prime}$ : query compression dimension
+- $W^{DQ} \in \mathbb{R}^{d_c^{\prime}\times d}$ : down-projection matrix
+- $W^{UQ} \in \mathbb{R}^{d_h n_h \times d_c^{\prime}}$ : up-projection matrix
+- $W^{QR} \in \mathbb{R}^{d_h^R n_h \times d_c^{\prime}}$
+- 最終的にattention配下のように計算される
+![attention](./images/attention.png)
+
+## DeepSeekMoE with Auxiliary-Loss-Free Load Balancing
+- 全体図を見ればわかるように選択されるExpertsと必ず使われるExpertsがある
+  - 前者をrouted experts
+  - 後者をshared experts
+- このときMoEは以下で定まる
+![deepseekmoe](./images/deepseekmoe.png)
+- $N_s$ : shared expertsの個数
+- $N_r$ : routed expertsの個数
+- $\mathrm{FFN}^{(s)}_i$ : $i$番目のshared experts
+- $\mathrm{FFN}^{(r)}_i$ : $i$番目のrouted experts
+- $k_r$ : routed expertsからtopkにより選択する個数
+- これに対してauxiliary loss free load balancingを適用してgating scoreを以下で定める
+  - https://arxiv.org/pdf/2408.15664
+![alf](./images/alf.png)
+- 以下のcomplementary sequence-wise auxiliary lossを使用する
+![cswal](./images/cswal.png)
+- $\alpha$はハイパラで$\mathbb{1}$は指示関数
+
+## Multi-Token Prediction (MTP)
+![mtp](./images/mtp.png)
