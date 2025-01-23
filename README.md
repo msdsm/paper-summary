@@ -83,3 +83,4 @@ Gradient-guided Splitting
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
   - lora : LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS
+  - auxiliary-loss-free : auxiliary-loss-free load balancing strategy for mixture-of-experts

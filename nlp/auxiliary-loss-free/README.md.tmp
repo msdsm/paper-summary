@@ -1,0 +1,47 @@
+# auxiliary-loss-free load balancing strategy for mixture-of-experts
+
+- https://arxiv.org/pdf/2408.15664
+
+## 概要
+- MoEのauxiliary lossを使わずにload balancingを実現する方法を提案
+- MoEでは各expertがそれぞれ使われるように学習する必要がある
+- load imbalanceが起こると以下につながるから
+  - routing collapse (数個のexpertsだけが選択され続けてほかのexpertsが全然学習されない状況)
+  - expertsが複数のデバイスに分散されてしまって計算を遅くしてしまう
+- このload imbalanceを解決するためにauxiliary lossがある
+- auxiliary lossは以下のトレードオフ
+  - load balance
+  - model performance
+- auxiliary lossのハイパラ係数を大きくするとload balanceは達成されるがlanguage modelが満足に学習されなくなる
+- auxiliary lossのハイパラ係数を小さくするとlanguage modelの学習は進む一方で数個のexpertsのみが選択され続けてしまう(load imbalanceが起こる)
+
+## MoEとは
+- https://zenn.dev/deepkawamura/articles/eea77a9a16d037
+- $N$個のexpertを持つMoE layerは以下のようにかける
+![moe](./images/moe.png)
+- Topkは第一引数の集合から値の大きい順に第二引数で指定された数だけ選択するものである
+- $g$の定義から$N$個のexpertのスコアから大きいものを$k$個してそれらの値をそのまま重みとして使用して、それら以外の重みは0に更新している
+- このとき重みが0になったFFNは順伝搬も逆伝搬も計算しない
+
+## auxiliary lossとは
+- load balanceのためのloss
+![auxiliary](./images/auxiliary.png)
+- $N$はexpertの個数
+- $K$はtopKで選択されるexpertの個数
+- $s_{i,t}$はrouting score of Expert $i$ for Token $t$
+- $\mathbb{1}$はindicatorで$f_i$はfraction of tokens routed to Expert $i$
+- $P_i$はaverage gating scores of Expert $i$
+- $\alpha$はハイパラ
+
+## auxiliary loss free load balancing strategy(提案手法)
+![strategy](./images/strategy.png)
+- auxiliary lossを使わずにload balancingを実現する
+- 各expertごとにハイパラとしてbias $\{b_i\}^N_{i=1}$を用意
+- このbiasをスコアに足し合わせて以下のようにtopkで選択する
+![alf](./images/alf.png)
+- このときbiasを足し合わせた値でtopkで選択して、gating scoreはもとのスコアでbiasを足し合わせたものではないことに注意
+- これよりbiasの値によってload balancingを調整できる一方で、gating scoreにはbiasは関与しないのでLLMの誤差逆伝搬には一切関係ない
+- 学習過程でbiasは動的に変化させる
+  - 多く使われている(重みが大きくなっている)expertに対応するbiasの値を小さくする
+  - あまり使われていないexpertに対応するbiasの値を大きくする
+- これによりload balanceとmodel performanceの両方を達成できauxiliary lossのtrade offという問題を解決
