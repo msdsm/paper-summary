@@ -1,0 +1,59 @@
+# Deblurring 3D Gaussian Splatting
+
+- https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07539.pdf
+- ECCV2024
+
+## 概要
+- Deblurring 3D-GSを提案
+- 3D-GSのdeblurringアルゴリズムとしてこの論文が初
+- 3DGSの後ろに小さいMLPをつける
+- このMLPにblurringの過程を学習させる
+- こうすることでblur imagesでgsを学習するとMLPがblurringの部分を学習するので推論時にMLPを使わずに3DGSのレンダリングだけやるとdeblur imagesが得られる
+
+## related work
+- Deblur-NeRF
+- DP-NeRF
+- PDRF
+- どれもNeRF上のdeblurで3DGSはまだない
+
+
+## 3DGS
+- 全体図は以下
+![arch](images/arch.png)
+- MLPはdefocus blurを学習するものとcamera motion blurを学習するものを用意
+### defocus blur modeling
+- MLPを使用してrotation, scaleをずらす
+$$
+\begin{align}
+\begin{split}
+\left(\partial r_j, \partial s_j \right) &= \mathcal{F}_{\theta}\left(\gamma\left(x_j\right), r_j, s_j, \gamma\left(v\right)\right) \\
+\hat{r}_j &= r_j \cdot \min\left(1.0, \lambda_s\partial r_j + \left(1-\lambda_s\right)\right) \\
+\hat{s}_j &= s_j \cdot \min\left(1.0, \lambda_s\partial s_j + \left(1-\lambda_s\right)\right)
+\end{split}
+\end{align}
+$$
+- $\gamma$はpositional encoding
+$$
+\gamma\left(p\right) = \left(\sin\left(2^k\pi p\right), \cos \left(2^k \pi p\right)\right)^{L-1}_{k=0}
+$$
+- $1.0$とのminをとっているので$r,s$はそれぞれ必ず大きくなることが保証されていてこれによりdefocus blurを表現できる
+- $G\left(x_j, r_j, s_j\right) \to G\left(x_j, \hat{r}_j, \hat{s}_j\right)$
+### camera motion blurring
+
+$$
+\begin{align}
+\begin{split}
+\{\left(\partial x_j^{\left(i\right)}\partial r_j^{\left(i\right)}, \partial s_j^{\left(i\right)} \right)\}^M_{i=1} &= \mathcal{F}_{\theta}\left(\gamma\left(x_j\right), r_j, s_j, \gamma\left(v\right)\right) \\
+\hat{x}_j^{\left(i\right)} &= x_j + \lambda_p \partial x_j^{\left(i\right)}\\
+\hat{r}_j^{\left(i\right)} &= r_j \cdot \partial r_j^{\left(i\right)} \\
+\hat{s}_j^{\left(i\right)} &= s_j \cdot \partial s_j^{\left(i\right)}
+\end{split}
+\end{align}
+$$
+
+## 英語
+- pave : 舗装する
+- impede : 妨げる
+- versatility : 多用途性
+- intermingle : 混ざりあう
+- harshly : 厳しく
