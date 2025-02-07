@@ -54,6 +54,7 @@ And Everything: A Survey
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
   - gaussiansr : GaussianSR: 3D Gaussian Super-Resolution with 2D
   - supergaussian : SuperGaussian: Repurposing Video Models for 3D Super Resolution
+  - e-3dgs : Per-Gaussian Embedding-Based Deformation for Deformable 3D Gaussian Splatting
 Diffusion Priors
   - supergs : SuperGS: Super-Resolution 3D Gaussian Splatting via Latent Feature Field and
 Gradient-guided Splitting
