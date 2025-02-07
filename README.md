@@ -54,10 +54,11 @@ And Everything: A Survey
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
   - gaussiansr : GaussianSR: 3D Gaussian Super-Resolution with 2D
   - supergaussian : SuperGaussian: Repurposing Video Models for 3D Super Resolution
-  - e-3dgs : Per-Gaussian Embedding-Based Deformation for Deformable 3D Gaussian Splatting
 Diffusion Priors
   - supergs : SuperGS: Super-Resolution 3D Gaussian Splatting via Latent Feature Field and
 Gradient-guided Splitting
+  - e-3dgs : Per-Gaussian Embedding-Based Deformation for Deformable 3D Gaussian Splatting
+  - deblurring-3dgs : Deblurring 3D Gaussian Splatting
 - nerf
   - nerf : NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis
   - nerf-sr : NeRF-SR: High Quality Neural Radiance Fields using Supersampling
