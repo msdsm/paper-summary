@@ -84,6 +84,7 @@ Gradient-guided Splitting
   - qwen-vl : Qwen2.5-VL Technical Report
   - vtg-llm : VTG-LLM: Integrating Timestamp Knowledge into Video LLMs for Enhanced Video Temporal Grounding
   - internvl : InternVL: Scaling up Vision Foundation Models and Aligning for Generic Visual-Linguistic Tasks
+  - internvl-1_5 : 
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
