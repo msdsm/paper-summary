@@ -82,7 +82,8 @@ Gradient-guided Splitting
   - long-vlm : LongVLM: Efficient Long Video Understanding via Large Language Models(ECCV2024)
   - tcr : Text-Conditioned Resampler For Long Form Video Understanding(ECCV2024)
   - qwen-vl : Qwen2.5-VL Technical Report
-  - vtg-llm : 
+  - vtg-llm : VTG-LLM: Integrating Timestamp Knowledge into Video LLMs for Enhanced Video Temporal Grounding
+  - internvl : InternVL: Scaling up Vision Foundation Models and Aligning for Generic Visual-Linguistic Tasks
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
