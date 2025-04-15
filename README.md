@@ -79,6 +79,7 @@ Gradient-guided Splitting
   - llava-next-video : blog
   - llava-next-stronger : blog
   - llava-video : VIDEO INSTRUCTION TUNING WITH SYNTHETIC DATA
+  - llava-next-interleave : LLaVA-NeXT-Interleave: Tackling Multi-image, Video, and 3D in Large Multimodal Models
   - long-vlm : LongVLM: Efficient Long Video Understanding via Large Language Models(ECCV2024)
   - tcr : Text-Conditioned Resampler For Long Form Video Understanding(ECCV2024)
   - qwen-vl : Qwen2.5-VL Technical Report
