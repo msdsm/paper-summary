@@ -1,0 +1,25 @@
+# DeepSeek-VL: Towards Real-World Vision-Language Understanding
+- https://arxiv.org/pdf/2403.05525
+## 英単語
+- taxonomy : 分類学, (ITでは情報を階層構造で整理したものを指す)
+- fuel : 燃えるものを入れる、もたらす、強化する
+- versatile : 多用途
+- proprietary : 独自の
+- underscore : 強調する
+- allocate : 割り当てる
+- imbue : ものや人に何かを染み込ませる、吹き込む、みたす
+- amalgamate : 合併する、融合する
+- authentic : 本物の
+- intricacy : 複雑さ
+- discernment : 識別
+- prolong : 延長する
+- adept : 熟練した
+- encompass : 包含する
+- perplexity : 困惑、難問
+- jointly : 共同で
+- alongside : 並んで
+- consecutive : 連続した
+- conceptual : 概念的な
+- devise : 工夫する
+- bolster : 強化する
+- culminate : 最高潮に達する

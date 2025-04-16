@@ -89,6 +89,7 @@ Gradient-guided Splitting
   - video-xl : Video-XL: Extra-Long Vision Language Model for Hour-Scale Video Understanding
   - video-xl-pro : Reconstructive Token Compression for Extremely Long Video Understanding
   - phi4-mini : Phi-4-Mini Technical Report: Compact yet Powerful Multimodal Language Models via Mixture-of-LoRAs
+  - deepseek-vl : DeepSeek-VL: Towards Real-World Vision-Language Understanding
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
