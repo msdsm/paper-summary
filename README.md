@@ -88,6 +88,7 @@ Gradient-guided Splitting
   - internvl-1_5 : How Far Are We to GPT-4V? Closing the Gap to Commercial Multimodal Models with Open-Source Suites
   - video-xl : Video-XL: Extra-Long Vision Language Model for Hour-Scale Video Understanding
   - video-xl-pro : Reconstructive Token Compression for Extremely Long Video Understanding
+  - phi3-tech-report : Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone
   - phi4-mini : Phi-4-Mini Technical Report: Compact yet Powerful Multimodal Language Models via Mixture-of-LoRAs
   - deepseek-vl : DeepSeek-VL: Towards Real-World Vision-Language Understanding
   - deepseek-vl2 : DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding
