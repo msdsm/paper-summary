@@ -86,6 +86,7 @@ Gradient-guided Splitting
   - vtg-llm : VTG-LLM: Integrating Timestamp Knowledge into Video LLMs for Enhanced Video Temporal Grounding
   - internvl : InternVL: Scaling up Vision Foundation Models and Aligning for Generic Visual-Linguistic Tasks
   - internvl-1_5 : How Far Are We to GPT-4V? Closing the Gap to Commercial Multimodal Models with Open-Source Suites
+  - internvl-3 : InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models
   - video-xl : Video-XL: Extra-Long Vision Language Model for Hour-Scale Video Understanding
   - video-xl-pro : Reconstructive Token Compression for Extremely Long Video Understanding
   - phi3-tech-report : Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone
