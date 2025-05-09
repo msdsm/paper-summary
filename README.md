@@ -99,6 +99,7 @@ Understanding and Editing
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
+  - perceiver: PERCEIVER IO: A GENERAL ARCHITECTURE FOR STRUCTURED INPUTS & OUTPUTS
   - lora : LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS
   - auxiliary-loss-free : auxiliary-loss-free load balancing strategy for mixture-of-experts
   - deepseek-v3 : DeepSeek-V3 Technical Report
