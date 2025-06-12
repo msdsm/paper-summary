@@ -94,8 +94,8 @@ Gradient-guided Splitting
   - phi4-mini : Phi-4-Mini Technical Report: Compact yet Powerful Multimodal Language Models via Mixture-of-LoRAs
   - deepseek-vl : DeepSeek-VL: Towards Real-World Vision-Language Understanding
   - deepseek-vl2 : DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding
-  - vidi: Vidi: Large Multimodal Models for Video
-Understanding and Editing
+  - vidi: Vidi: Large Multimodal Models for Video Understanding and Editing
+  - ref-l4: Revisiting Referring Expression Comprehension Evaluation in the Era of Large Multimodal Models
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
