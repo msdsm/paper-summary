@@ -96,6 +96,7 @@ Gradient-guided Splitting
   - deepseek-vl2 : DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding
   - vidi: Vidi: Large Multimodal Models for Video Understanding and Editing
   - ref-l4: Revisiting Referring Expression Comprehension Evaluation in the Era of Large Multimodal Models
+  - molmo-and-pixmo: Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
