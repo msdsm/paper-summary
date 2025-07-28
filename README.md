@@ -69,6 +69,7 @@ Gradient-guided Splitting
   - adatad : End-to-End Temporal Action Detection with 1B Parameters Across 1000 Frames
   - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
   - vtune: On the Consistency of Video Large Language Models in Temporal Comprehension
+  - longvale: LongVALE: Vision-Audio-Language-Event Benchmark TowardsTime-Aware Omni-Modal Perception of Long Videos
 - vision-and-language
   - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
   - lit : LiT : Zero-Shot Transfer with Locked-image text Tuning
