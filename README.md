@@ -70,6 +70,7 @@ Gradient-guided Splitting
   - iaw : Aligning Step-by-Step Instructional Diagrams to Video Demonstrations
   - vtune: On the Consistency of Video Large Language Models in Temporal Comprehension
   - longvale: LongVALE: Vision-Audio-Language-Event Benchmark TowardsTime-Aware Omni-Modal Perception of Long Videos
+  - video-3d-llm: Video-3D LLM: Learning Position-Aware Video Representation for 3D Scene Understanding
 - vision-and-language
   - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
   - lit : LiT : Zero-Shot Transfer with Locked-image text Tuning
