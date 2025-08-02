@@ -101,6 +101,7 @@ Gradient-guided Splitting
   - vidi: Vidi: Large Multimodal Models for Video Understanding and Editing
   - ref-l4: Revisiting Referring Expression Comprehension Evaluation in the Era of Large Multimodal Models
   - molmo-and-pixmo: Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models
+  - llava-st: LLaVA-ST: A Multimodal Large Language Model for Fine-Grained Spatial-Temporal Understanding
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
