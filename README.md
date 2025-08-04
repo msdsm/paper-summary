@@ -50,6 +50,8 @@ And Everything: A Survey
 - deblurring
   - image-deblurring-survey : Deep Image Deblurring: A Survey
   - adarevd : AdaRevD: Adaptive Patch Exiting Reversible Decoder Pushes the Limit of Image Deblurring
+- object-detecion
+- ovd-survey: A Survey on Open-Vocabulary Detection and Segmentation: Past, Present, and Future
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
@@ -102,6 +104,7 @@ Gradient-guided Splitting
   - ref-l4: Revisiting Referring Expression Comprehension Evaluation in the Era of Large Multimodal Models
   - molmo-and-pixmo: Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models
   - llava-st: LLaVA-ST: A Multimodal Large Language Model for Fine-Grained Spatial-Temporal Understanding
+
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
