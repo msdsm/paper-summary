@@ -54,6 +54,7 @@ And Everything: A Survey
   - faster-r-cnn: Faster R-CNN: Towards Real-Time Object Detection with Reg
   - yolo: You Only Look Once: Unified, Real-Time Object Detection
   - yolov2: YOLO9000: Better, Faster, Stronger
+  - yolov3: YOLOv3: An Incremental Improvement
   - ovd-survey: A Survey on Open-Vocabulary Detection and Segmentation: Past, Present, and Future
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
