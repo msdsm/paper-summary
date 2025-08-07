@@ -51,7 +51,8 @@ And Everything: A Survey
   - image-deblurring-survey : Deep Image Deblurring: A Survey
   - adarevd : AdaRevD: Adaptive Patch Exiting Reversible Decoder Pushes the Limit of Image Deblurring
 - object-detecion
-  - faster-r-cnn:
+  - faster-r-cnn: Faster R-CNN: Towards Real-Time Object Detection with Reg
+  - yolo: You Only Look Once: Unified, Real-Time Object Detection
   - ovd-survey: A Survey on Open-Vocabulary Detection and Segmentation: Past, Present, and Future
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
