@@ -56,6 +56,7 @@ And Everything: A Survey
   - yolov2: YOLO9000: Better, Faster, Stronger
   - yolov3: YOLOv3: An Incremental Improvement
   - yolov4: YOLOv4: Optimal Speed and Accuracy of Object Detection
+  - yolox: YOLOX: Exceeding YOLO Series in 2021
   - ovd-survey: A Survey on Open-Vocabulary Detection and Segmentation: Past, Present, and Future
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
