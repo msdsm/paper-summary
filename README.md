@@ -57,6 +57,7 @@ And Everything: A Survey
   - yolov3: YOLOv3: An Incremental Improvement
   - yolov4: YOLOv4: Optimal Speed and Accuracy of Object Detection
   - yolox: YOLOX: Exceeding YOLO Series in 2021
+  - detr: End-to-End Object Detection with Transformers
   - ovd-survey: A Survey on Open-Vocabulary Detection and Segmentation: Past, Present, and Future
   - ovr-cnn: Open-Vocabulary Object Detection Using Captions
   - vild: OPEN-VOCABULARY OBJECT DETECTION VIA VISION AND LANGUAGE KNOWLEDGE DISTILLATION
