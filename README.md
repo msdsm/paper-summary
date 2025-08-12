@@ -58,6 +58,7 @@ And Everything: A Survey
   - yolov4: YOLOv4: Optimal Speed and Accuracy of Object Detection
   - yolox: YOLOX: Exceeding YOLO Series in 2021
   - ovd-survey: A Survey on Open-Vocabulary Detection and Segmentation: Past, Present, and Future
+  - ovr-cnn: Open-Vocabulary Object Detection Using Captions
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
