@@ -83,6 +83,8 @@ Gradient-guided Splitting
   - longvale: LongVALE: Vision-Audio-Language-Event Benchmark TowardsTime-Aware Omni-Modal Perception of Long Videos
   - video-3d-llm: Video-3D LLM: Learning Position-Aware Video Representation for 3D Scene Understanding
   - m-llm-based-video-frame-selection: M-LLM Based Video Frame Selection for Efficient Video Understanding
+  - video-comp: VideoComp: Advancing Fine-Grained Compositional and Temporal Alignment in Video-Text Models
+
 - vision-and-language
   - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
   - lit : LiT : Zero-Shot Transfer with Locked-image text Tuning
@@ -113,7 +115,6 @@ Gradient-guided Splitting
   - ref-l4: Revisiting Referring Expression Comprehension Evaluation in the Era of Large Multimodal Models
   - molmo-and-pixmo: Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models
   - llava-st: LLaVA-ST: A Multimodal Large Language Model for Fine-Grained Spatial-Temporal Understanding
-
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
