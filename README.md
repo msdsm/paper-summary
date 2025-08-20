@@ -61,6 +61,8 @@ And Everything: A Survey
   - ovd-survey: A Survey on Open-Vocabulary Detection and Segmentation: Past, Present, and Future
   - ovr-cnn: Open-Vocabulary Object Detection Using Captions
   - vild: OPEN-VOCABULARY OBJECT DETECTION VIA VISION AND LANGUAGE KNOWLEDGE DISTILLATION
+- segmentation
+  - sam: Segment Anything
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
