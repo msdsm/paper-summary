@@ -63,6 +63,7 @@ And Everything: A Survey
   - vild: OPEN-VOCABULARY OBJECT DETECTION VIA VISION AND LANGUAGE KNOWLEDGE DISTILLATION
 - segmentation
   - sam: Segment Anything
+  - sam2: SAM 2: Segment Anything in Images and Videos
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
