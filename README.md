@@ -13,6 +13,7 @@
     - simmim : SimMIM: a Simple Framework for Masked Image Modeling
     - revnet : The Reversible Residual Network: Backpropagation Without Storing Activations
     - rev-vit : Reversible Vision Transformers
+    - dino: Emerging Properties in Self-Supervised Vision Transformers
 - diffusion
     - ddpm : Denoising Diffusion Probabilistc Models
     - palette : Palette: Image-to-Image Diffusion Models
