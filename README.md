@@ -15,6 +15,7 @@
     - rev-vit : Reversible Vision Transformers
     - dino: Emerging Properties in Self-Supervised Vision Transformers
     - dinov2: DINOv2: Learning Robust Visual Features without Supervision
+    - dinov3: DINOv3
 - diffusion
     - ddpm : Denoising Diffusion Probabilistc Models
     - palette : Palette: Image-to-Image Diffusion Models
