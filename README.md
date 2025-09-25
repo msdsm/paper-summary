@@ -122,6 +122,7 @@ Gradient-guided Splitting
   - molmo-and-pixmo: Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models
   - llava-st: LLaVA-ST: A Multimodal Large Language Model for Fine-Grained Spatial-Temporal Understanding
   - internvl-3_5: InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency
+  - vlm-vg: Learning Visual Grounding from Generative Vision and Language Model
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
