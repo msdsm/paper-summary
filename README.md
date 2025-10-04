@@ -38,6 +38,7 @@
     - hmanet : HMANet: Hybrid Multi-Axis Aggregation Network for Image Super-Resolution
     - diffusion-sr-survey : Diffusion Models, Image Super-Resolution
     - blip-diffusion: BLIP-Diffusion: Pre-trained Subject Representation for Controllable Text-to-Image Generation and Editing
+    - controlnet: Adding Conditional Control to Text-to-Image Diffusion Models
 And Everything: A Survey
     - tr-misr : TR-MISR: Multiimage Super-Resolution Based on Feature Fusion With Transformers
     - div2k : NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study
