@@ -94,6 +94,7 @@ Gradient-guided Splitting
   - m-llm-based-video-frame-selection: M-LLM Based Video Frame Selection for Efficient Video Understanding
   - video-comp: VideoComp: Advancing Fine-Grained Compositional and Temporal Alignment in Video-Text Models
   - seq2time: Seq2Time: Sequential Knowledge Transfer for Video LLM Temporal Grounding
+  - video-models-are-zero-shot-learners-and-reasoners: Video models are zero-shot learners and reasoners
 - vision-and-language
   - clip : CLIP(Learning Transferable Visual Models From Natural Language Supervision)
   - lit : LiT : Zero-Shot Transfer with Locked-image text Tuning
