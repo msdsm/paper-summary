@@ -127,6 +127,8 @@ Gradient-guided Splitting
   - llava-st: LLaVA-ST: A Multimodal Large Language Model for Fine-Grained Spatial-Temporal Understanding
   - internvl-3_5: InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency
   - vlm-vg: Learning Visual Grounding from Generative Vision and Language Model
+  - streaming-vlm: STREAMINGVLM: REAL-TIME UNDERSTANDING
+FOR INFINITE VIDEO STREAMS
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
