@@ -129,6 +129,7 @@ Gradient-guided Splitting
   - vlm-vg: Learning Visual Grounding from Generative Vision and Language Model
   - streaming-vlm: STREAMINGVLM: REAL-TIME UNDERSTANDING
 FOR INFINITE VIDEO STREAMS
+  - piza: Referring Expression Comprehension for Small Objects
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
