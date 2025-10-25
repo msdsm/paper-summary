@@ -68,6 +68,7 @@ And Everything: A Survey
   - ovr-cnn: Open-Vocabulary Object Detection Using Captions
   - vild: OPEN-VOCABULARY OBJECT DETECTION VIA VISION AND LANGUAGE KNOWLEDGE DISTILLATION
   - mrvg: Multimodal Reference Visual Grounding
+  - nids: Adapting Pre-Trained Vision Models for Novel Instance Detection and Segmentation
 - segmentation
   - sam: Segment Anything
   - sam2: SAM 2: Segment Anything in Images and Videos
