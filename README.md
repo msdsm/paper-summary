@@ -67,6 +67,7 @@ And Everything: A Survey
   - ovd-survey: A Survey on Open-Vocabulary Detection and Segmentation: Past, Present, and Future
   - ovr-cnn: Open-Vocabulary Object Detection Using Captions
   - vild: OPEN-VOCABULARY OBJECT DETECTION VIA VISION AND LANGUAGE KNOWLEDGE DISTILLATION
+  - mrvg: Multimodal Reference Visual Grounding
 - segmentation
   - sam: Segment Anything
   - sam2: SAM 2: Segment Anything in Images and Videos
