@@ -72,6 +72,7 @@ And Everything: A Survey
 - segmentation
   - sam: Segment Anything
   - sam2: SAM 2: Segment Anything in Images and Videos
+  - sam3: SEGMENT ANYTHING WITH CONCEPTS
 - 3dgs
   - 3dgs : 3D Gaussian Splatting for Real-Time Radiance Field Rendering
   - srgs: SRGS: Super-Resolution 3D Gaussian Splatting
