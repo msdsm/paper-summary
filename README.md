@@ -16,7 +16,7 @@
     - dino: Emerging Properties in Self-Supervised Vision Transformers
     - dinov2: DINOv2: Learning Robust Visual Features without Supervision
     - dinov3: DINOv3
-- diffusion
+- generation (diffusion, flow)
     - ddpm : Denoising Diffusion Probabilistc Models
     - palette : Palette: Image-to-Image Diffusion Models
     - ddim : Denoising Diffusion Implicit Models
@@ -27,6 +27,7 @@
     - cdm : Cascaded Diffusion Model
     - inpaint-survey : Deep Learning-based Image and Video Inpainting: A Survey
     - dit: Scalable Diffusion Models with Transformers
+    - qwen-image: Qwen-Image Technical Report
 - super-resolution
     - srcnn-vdsr-fsrcnn-fspcn : 超解像の歴史(CNNあたりからGAN登場まで)
     - swinir : SwinIR(SwinIR: Image Restoration Using Swin Transformer)
