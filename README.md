@@ -28,6 +28,7 @@
     - inpaint-survey : Deep Learning-based Image and Video Inpainting: A Survey
     - dit: Scalable Diffusion Models with Transformers
     - qwen-image: Qwen-Image Technical Report
+    - flow-matching: FLOW MATCHING FOR GENERATIVE MODELING
 - super-resolution
     - srcnn-vdsr-fsrcnn-fspcn : 超解像の歴史(CNNあたりからGAN登場まで)
     - swinir : SwinIR(SwinIR: Image Restoration Using Swin Transformer)
