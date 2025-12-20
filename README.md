@@ -137,6 +137,7 @@ FOR INFINITE VIDEO STREAMS
   - piza: Referring Expression Comprehension for Small Objects
   - paddle-ocr: PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact Vision-Language Model
   - deepseek-ocr: DeepSeek-OCR: Contexts Optical Compression
+  - idefic: Building and better understanding vision-language models: insights and future directions
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
