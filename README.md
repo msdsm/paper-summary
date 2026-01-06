@@ -139,6 +139,7 @@ FOR INFINITE VIDEO STREAMS
   - deepseek-ocr: DeepSeek-OCR: Contexts Optical Compression
   - idefic: Building and better understanding vision-language models: insights and future directions
   - covt: Chain-of-Visual-Thought: Teaching VLMs to See and Think Better with Continuous Visual Tokens
+  - mcot: Multimodal Chain-of-Thought Reasoning in Language Models
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
