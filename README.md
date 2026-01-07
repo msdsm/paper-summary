@@ -140,6 +140,7 @@ FOR INFINITE VIDEO STREAMS
   - idefic: Building and better understanding vision-language models: insights and future directions
   - covt: Chain-of-Visual-Thought: Teaching VLMs to See and Think Better with Continuous Visual Tokens
   - mcot: Multimodal Chain-of-Thought Reasoning in Language Models
+  - viscot: visual CoT: Advancing Multi-Modal Language Models with a Comprehensive Dataset and Benchmark for Chain-of-Thought Reasoning
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
