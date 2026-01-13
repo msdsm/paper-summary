@@ -141,6 +141,7 @@ FOR INFINITE VIDEO STREAMS
   - covt: Chain-of-Visual-Thought: Teaching VLMs to See and Think Better with Continuous Visual Tokens
   - mcot: Multimodal Chain-of-Thought Reasoning in Language Models
   - viscot: visual CoT: Advancing Multi-Modal Language Models with a Comprehensive Dataset and Benchmark for Chain-of-Thought Reasoning
+  - qwen3-vl-embedding-reranker: Qwen3-VL-Embedding and Qwen3-VL-Reranker: A Unified Framework for State-of-the-Art Multimodal Retrieval and Ranking
 - nlp
   - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
