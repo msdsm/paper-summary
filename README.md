@@ -133,6 +133,7 @@ Gradient-guided Splitting
   - internvl-3_5: InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency
   - vlm-vg: Learning Visual Grounding from Generative Vision and Language Model
   - streaming-vlm: STREAMINGVLM: REAL-TIME UNDERSTANDING
+  - step3-vl: STEP3-VL-10B Technical Report
 FOR INFINITE VIDEO STREAMS
   - piza: Referring Expression Comprehension for Small Objects
   - paddle-ocr: PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact Vision-Language Model
