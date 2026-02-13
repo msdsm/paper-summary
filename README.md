@@ -145,9 +145,10 @@ FOR INFINITE VIDEO STREAMS
   - qwen3-vl-embedding-reranker: Qwen3-VL-Embedding and Qwen3-VL-Reranker: A Unified Framework for State-of-the-Art Multimodal Retrieval and Ranking
   - migician: Migician: Revealing the Magic of Free-Form Multi-Image Grounding in
 Multimodal Large Language Models
+- mi (Mechanistic Interpretability)
   - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
+  - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
 - nlp
-  - keyword : LLMの用語集
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
   - perceiver: PERCEIVER IO: A GENERAL ARCHITECTURE FOR STRUCTURED INPUTS & OUTPUTS
