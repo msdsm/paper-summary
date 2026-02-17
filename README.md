@@ -148,6 +148,8 @@ Multimodal Large Language Models
 - mi (Mechanistic Interpretability)
   - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
   - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
+  - attention-lens-tool: Attention Lens: A Tool for Mechanistically Interpreting the Attention Head Information Retrieval
+Mechanism
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
