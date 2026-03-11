@@ -150,6 +150,7 @@ Multimodal Large Language Models
   - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
   - attention-lens-tool: Attention Lens: A Tool for Mechanistically Interpreting the Attention Head Information Retrieval Mechanism
   - vlm-attention-lens: Devils in Middle Layers of Large Vision-Language Models: Interpreting, Detecting and Mitigating Object Hallucinations via Attention Lens
+  - modality-gap: Mind the Gap: Understanding the Modality Gap in Multi-modal Contrastive Representation Learning
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
