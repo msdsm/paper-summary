@@ -143,8 +143,8 @@ FOR INFINITE VIDEO STREAMS
   - mcot: Multimodal Chain-of-Thought Reasoning in Language Models
   - viscot: visual CoT: Advancing Multi-Modal Language Models with a Comprehensive Dataset and Benchmark for Chain-of-Thought Reasoning
   - qwen3-vl-embedding-reranker: Qwen3-VL-Embedding and Qwen3-VL-Reranker: A Unified Framework for State-of-the-Art Multimodal Retrieval and Ranking
-  - migician: Migician: Revealing the Magic of Free-Form Multi-Image Grounding in
-Multimodal Large Language Models
+  - migician: Migician: Revealing the Magic of Free-Form Multi-Image Grounding in Multimodal Large Language Models
+  - qwen3-vl: Qwen3-VL Technical Report
 - mi (Mechanistic Interpretability)
   - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
   - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
