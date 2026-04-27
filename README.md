@@ -147,6 +147,7 @@ FOR INFINITE VIDEO STREAMS
   - qwen3-vl: Qwen3-VL Technical Report
   - multimodal pretrain: Beyond Language Modeling: An Exploration of Multimodal Pretraining
   - countbench: Teaching CLIP to Count to Ten
+  - vector-space-alignment: Do Vision and Language Models Share Concepts? A Vector Space Alignment Study
 - mi (Mechanistic Interpretability)
   - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
   - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
