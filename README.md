@@ -149,6 +149,7 @@ FOR INFINITE VIDEO STREAMS
   - countbench: Teaching CLIP to Count to Ten
   - vector-space-alignment: Do Vision and Language Models Share Concepts? A Vector Space Alignment Study
   - embodiedscan: EmbodiedScan: A Holistic Multi-Modal 3D Perception Suite Towards Embodied AI
+  - deepseek-thinking-visual: Thinking with Visual Primitives
 - mi (Mechanistic Interpretability)
   - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
   - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
