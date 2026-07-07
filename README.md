@@ -157,6 +157,7 @@ FOR INFINITE VIDEO STREAMS
   - vlm-attention-lens: Devils in Middle Layers of Large Vision-Language Models: Interpreting, Detecting and Mitigating Object Hallucinations via Attention Lens
   - modality-gap: Mind the Gap: Understanding the Modality Gap in Multi-modal Contrastive Representation Learning
   - sae-a: Cross-Modal Redundancy and the Geometry of Vision-Language Embeddings
+  - countscope: Understanding Counting Mechanisms in Large Language and Vision-Language Models
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
