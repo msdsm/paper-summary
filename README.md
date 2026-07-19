@@ -150,6 +150,7 @@ FOR INFINITE VIDEO STREAMS
   - vector-space-alignment: Do Vision and Language Models Share Concepts? A Vector Space Alignment Study
   - embodiedscan: EmbodiedScan: A Holistic Multi-Modal 3D Perception Suite Towards Embodied AI
   - deepseek-thinking-visual: Thinking with Visual Primitives
+  - gemma4: Gemma 4 Technical Report
 - mi (Mechanistic Interpretability)
   - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
   - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
