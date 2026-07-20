@@ -172,3 +172,4 @@ FOR INFINITE VIDEO STREAMS
   - sd-survey: Unlocking Efficiency in Large Language Model Inference:A Comprehensive Survey of Speculative Decoding
   - sd: Fast Inference from Transformers via Speculative Decoding
   - sps: Accelerating Large Language Model Decoding with Speculative Sampling
+  - medusa: MEDUSA: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads
