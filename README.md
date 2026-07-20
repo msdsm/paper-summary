@@ -173,3 +173,4 @@ FOR INFINITE VIDEO STREAMS
   - sd: Fast Inference from Transformers via Speculative Decoding
   - sps: Accelerating Large Language Model Decoding with Speculative Sampling
   - medusa: MEDUSA: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads
+  - eagle: EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty
