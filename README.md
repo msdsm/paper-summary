@@ -171,3 +171,4 @@ FOR INFINITE VIDEO STREAMS
   - norm-based-analysis: Attention is Not Only a Weight: Analyzing Transformers with Vector Norms
   - sd-survey: Unlocking Efficiency in Large Language Model Inference:A Comprehensive Survey of Speculative Decoding
   - sd: Fast Inference from Transformers via Speculative Decoding
+  - sps: Accelerating Large Language Model Decoding with Speculative Sampling
