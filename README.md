@@ -174,3 +174,4 @@ FOR INFINITE VIDEO STREAMS
   - sps: Accelerating Large Language Model Decoding with Speculative Sampling
   - medusa: MEDUSA: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads
   - eagle: EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty
+  - mtp: Better & Faster Large Language Models via Multi-token Prediction
