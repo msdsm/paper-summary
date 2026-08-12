@@ -159,6 +159,7 @@ FOR INFINITE VIDEO STREAMS
   - modality-gap: Mind the Gap: Understanding the Modality Gap in Multi-modal Contrastive Representation Learning
   - sae-a: Cross-Modal Redundancy and the Geometry of Vision-Language Embeddings
   - countscope: Understanding Counting Mechanisms in Large Language and Vision-Language Models
+  - vlm-heatmap-vqa: Where do Large Vision-Language Models Look at when Answering Questions?
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
