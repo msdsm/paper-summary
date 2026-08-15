@@ -161,6 +161,7 @@ FOR INFINITE VIDEO STREAMS
   - countscope: Understanding Counting Mechanisms in Large Language and Vision-Language Models
   - vlm-heatmap-vqa: Where do Large Vision-Language Models Look at when Answering Questions?
   - lvlm-interpret: LVLM-Interpret: An Interpretability Tool for Large Vision-Language Models
+  - vlm-interpret-owl: Explaining Multi-modal Large Language Models by Analyzing their Vision Perception
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
