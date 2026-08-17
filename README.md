@@ -164,6 +164,7 @@ FOR INFINITE VIDEO STREAMS
   - vlm-interpret-owl: Explaining Multi-modal Large Language Models by Analyzing their Vision Perception
   - transformer-lrp: Transformer Interpretability Beyond Attention Visualization
   - generic-transformer-attribution: Generic Attention-model Explainability for Interpreting Bi-Modal and Encoder-Decoder Transformers
+  - ptc: Getting to the Point: Pointing Improves LVLMs at Counting
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
