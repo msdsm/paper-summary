@@ -165,6 +165,7 @@ FOR INFINITE VIDEO STREAMS
   - transformer-lrp: Transformer Interpretability Beyond Attention Visualization
   - generic-transformer-attribution: Generic Attention-model Explainability for Interpreting Bi-Modal and Encoder-Decoder Transformers
   - ptc: Getting to the Point: Pointing Improves LVLMs at Counting
+  - thinking-with-vg: Thinking with Visual Grounding
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
