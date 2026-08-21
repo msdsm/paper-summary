@@ -167,6 +167,7 @@ FOR INFINITE VIDEO STREAMS
   - ptc: Getting to the Point: Pointing Improves LVLMs at Counting
   - thinking-with-vg: Thinking with Visual Grounding
   - grounding-dino: Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection
+  - rec: Referring Expression Counting
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
