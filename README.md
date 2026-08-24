@@ -168,6 +168,7 @@ FOR INFINITE VIDEO STREAMS
   - thinking-with-vg: Thinking with Visual Grounding
   - grounding-dino: Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection
   - rec: Referring Expression Counting
+  - vlm-counting-bottleneck: Unveiling the Visual Counting Bottleneck in Vision-Language Models
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
