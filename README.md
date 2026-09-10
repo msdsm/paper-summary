@@ -170,6 +170,7 @@ FOR INFINITE VIDEO STREAMS
   - rec: Referring Expression Counting
   - vlm-counting-bottleneck: Unveiling the Visual Counting Bottleneck in Vision-Language Models
   - vision-attention-sink: Counting to Four is still a Chore for VLMs
+  - vlm-blind: Vision language models are blind: Failing to translate detailed visual features into words
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
