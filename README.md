@@ -151,14 +151,6 @@ FOR INFINITE VIDEO STREAMS
   - embodiedscan: EmbodiedScan: A Holistic Multi-Modal 3D Perception Suite Towards Embodied AI
   - deepseek-thinking-visual: Thinking with Visual Primitives
   - gemma4: Gemma 4 Technical Report
-- mi (Mechanistic Interpretability)
-  - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
-  - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
-  - attention-lens-tool: Attention Lens: A Tool for Mechanistically Interpreting the Attention Head Information Retrieval Mechanism
-  - vlm-attention-lens: Devils in Middle Layers of Large Vision-Language Models: Interpreting, Detecting and Mitigating Object Hallucinations via Attention Lens
-  - modality-gap: Mind the Gap: Understanding the Modality Gap in Multi-modal Contrastive Representation Learning
-  - sae-a: Cross-Modal Redundancy and the Geometry of Vision-Language Embeddings
-  - countscope: Understanding Counting Mechanisms in Large Language and Vision-Language Models
   - vlm-heatmap-vqa: Where do Large Vision-Language Models Look at when Answering Questions?
   - lvlm-interpret: LVLM-Interpret: An Interpretability Tool for Large Vision-Language Models
   - vlm-interpret-owl: Explaining Multi-modal Large Language Models by Analyzing their Vision Perception
@@ -172,6 +164,15 @@ FOR INFINITE VIDEO STREAMS
   - vision-attention-sink: Counting to Four is still a Chore for VLMs
   - vlm-blind: Vision language models are blind: Failing to translate detailed visual features into words
   - can-vlm-count: Can Vision-Language Models Count? A Synthetic Benchmark and Analysis of Attention-Based Interventions
+  - mechanisms-of-ol-vlm: Mechanisms of Object Localization in Vision-Language Models
+- mi (Mechanistic Interpretability)
+  - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
+  - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
+  - attention-lens-tool: Attention Lens: A Tool for Mechanistically Interpreting the Attention Head Information Retrieval Mechanism
+  - vlm-attention-lens: Devils in Middle Layers of Large Vision-Language Models: Interpreting, Detecting and Mitigating Object Hallucinations via Attention Lens
+  - modality-gap: Mind the Gap: Understanding the Modality Gap in Multi-modal Contrastive Representation Learning
+  - sae-a: Cross-Modal Redundancy and the Geometry of Vision-Language Embeddings
+  - countscope: Understanding Counting Mechanisms in Large Language and Vision-Language Models
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
