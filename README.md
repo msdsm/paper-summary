@@ -165,6 +165,7 @@ FOR INFINITE VIDEO STREAMS
   - vlm-blind: Vision language models are blind: Failing to translate detailed visual features into words
   - can-vlm-count: Can Vision-Language Models Count? A Synthetic Benchmark and Analysis of Attention-Based Interventions
   - mechanisms-of-ol-vlm: Mechanisms of Object Localization in Vision-Language Models
+  - llava-interp: 
 - mi (Mechanistic Interpretability)
   - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
   - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
