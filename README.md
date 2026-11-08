@@ -165,7 +165,8 @@ FOR INFINITE VIDEO STREAMS
   - vlm-blind: Vision language models are blind: Failing to translate detailed visual features into words
   - can-vlm-count: Can Vision-Language Models Count? A Synthetic Benchmark and Analysis of Attention-Based Interventions
   - mechanisms-of-ol-vlm: Mechanisms of Object Localization in Vision-Language Models
-  - llava-interp: 
+  - llava-interp: Towards Interpreting Visual Information Processing in Vision-Language Models
+  - vg-w-lh: Your Large Vision-Language Model Only Needs A Few Attention Heads For Visual Grounding
 - mi (Mechanistic Interpretability)
   - survey-multimodal-mi: A Survey on Mechanistic Interpretability for Multi-Modal Foundation Models
   - latentlens: LATENTLENS: Revealing Highly Interpretable Visual Tokens in LLMs
@@ -174,7 +175,7 @@ FOR INFINITE VIDEO STREAMS
   - modality-gap: Mind the Gap: Understanding the Modality Gap in Multi-modal Contrastive Representation Learning
   - sae-a: Cross-Modal Redundancy and the Geometry of Vision-Language Embeddings
   - countscope: Understanding Counting Mechanisms in Large Language and Vision-Language Models
-  - vrh: 
+  - vrh: Retrieval Heads Meet Vision: Uncovering How VLMs Locate and Extract Visual Information
 - nlp
   - transformer : Transformer(Attention is all you need)
   - perceiver: Perceiver: General Perception with Iterative Attention
